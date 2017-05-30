@@ -1,0 +1,100 @@
+V "GNAT Lib v2016"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P SS ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U main%b		main.adb		cb661fb9 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W sim%s			sim.adb			sim.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-charac.ads		20160516092930 2d3ec45b ada.characters%s
+D a-chlat1.ads		20160516092930 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20160516092926 61e5e089 ada.containers%s
+D a-cohata.ads		20160516092932 80a8c839 ada.containers.hash_tables%s
+D a-cohase.ads		20160516092928 d0a51871 ada.containers.hashed_sets%s
+D a-conhel.ads		20160516092928 20298884 ada.containers.helpers%s
+D a-convec.ads		20160516092932 7e2b0fdf ada.containers.vectors%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20160516092928 7c7305e9 ada.iterator_interfaces%s
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-string.ads		20160516092930 90ac6797 ada.strings%s
+D a-strmap.ads		20160516092930 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20160516092928 3f91d4c5 ada.strings.unbounded%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
+D main.adb		20170411063548 3118f27f main%b
+D model.ads		20170527191540 eb809159 model%s
+D sim.ads		20170401180212 6a6d35b5 sim%s
+D station.ads		20170530110852 b43b2778 station%s
+D steering.ads		20170425093334 511a4152 steering%s
+D system.ads		20160516092930 2da59038 system%s
+D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-tasinf.ads		20160516092930 601f6b72 system.task_info%s
+D s-taspri.ads		20160516092930 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-tassta.ads		20160516092928 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+D s-win32.ads		20160516092926 b7f96285 system.win32%s
+D track.ads		20170521144948 7c12c738 track%s
+D train.ads		20170529182320 06baf68b train%s
+D worker.ads		20170529201636 c9351b8a worker%s
+X 1 ada.ads
+16K9*Ada 19e8 25|2r6 2r25 3r6
+X 7 a-conhel.ads
+84R12 Reference_Control_Type<10|43R9>
+X 12 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[8|72]>
+X 13 a-reatim.ads
+39K13*Real_Time 187e18 25|2w10 2r29
+X 19 a-textio.ads
+49K13*Text_IO 471e16 25|3w10
+X 25 main.adb
+7U11*Main 7b11 27l5 27t9
+X 27 sim.ads
+9K9*sim 25|1w6 23r4 27|14e8
+12U14*simulation_start 25|23s8
+X 44 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+

@@ -1,0 +1,161 @@
+V "GNAT Lib v2016"
+M P W=b
+A -gnatA
+A -gnatc
+A -mtune=generic
+A -march=pentium4
+P NO ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_ANONYMOUS_ALLOCATORS
+RV NO_IO
+RV NO_LOCAL_ALLOCATORS
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_ALLOCATORS
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+RV MAX_TASKS=1+
+
+U simulation_start%b	simulation_start.adb	34fc3145 OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.bounded%s	a-strbou.adb		a-strbou.ali
+W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W getinput%s		getinput.adb		getinput.ali
+W log%s			log.adb			log.ali
+W model%s		model.adb		model.ali
+W steering%s		steering.adb		steering.ali
+W track%s		track.adb		track.ali
+W train%s		train.adb		train.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-charac.ads		20160516092930 2d3ec45b ada.characters%s
+D a-chlat1.ads		20160516092930 66457d31 ada.characters.latin_1%s
+D a-comlin.ads		20160516092930 ea62afbc ada.command_line%s
+D a-contai.ads		20160516092926 61e5e089 ada.containers%s
+D a-conhel.ads		20160516092928 20298884 ada.containers.helpers%s
+D a-convec.ads		20160516092932 7e2b0fdf ada.containers.vectors%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20160516092928 7c7305e9 ada.iterator_interfaces%s
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-string.ads		20160516092930 90ac6797 ada.strings%s
+D a-strbou.ads		20160516092928 53ab54ae ada.strings.bounded%s
+D a-strmap.ads		20160516092930 e8bb714a ada.strings.maps%s
+D a-strsup.ads		20160516092928 a27dcb33 ada.strings.superbounded%s
+D a-strunb.ads		20160516092928 3f91d4c5 ada.strings.unbounded%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D getinput.ads		20170328092222 24ba7c8b getinput%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
+D log.ads		20170328092644 f2847696 log%s
+D model.ads		20170401122602 1ca495c8 model%s
+D simulation_start.adb	20170401122912 45c89cbe simulation_start%b
+D steering.ads		20170328124342 d8a3c570 steering%s
+D system.ads		20160516092930 2da59038 system%s
+D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20160516092930 601f6b72 system.task_info%s
+D s-taspri.ads		20160516092930 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+D s-win32.ads		20160516092926 b7f96285 system.win32%s
+D track.ads		20170328121310 ace2888e track%s
+D train.ads		20170328121232 71daa5d3 train%s
+X 1 ada.ads
+16K9*Ada 19e8 28|1r6 2r6 6r6 7r6 20r24 30r7 31r44 34r10 35r10 38r13 39r10
+. 62r10 64r10 68r7 69r7 70r7 71r7 72r7 73r7
+X 4 a-comlin.ads
+38K13*Command_Line 139e21 28|6w10 30r11 31r48 34r14 38r17
+41V13*Argument_Count{natural} 28|30s24
+48V13*Argument{string} 28|31s61 34s27 38s30
+X 11 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[7|72]>
+X 14 a-string.ads
+16K13*Strings 35e16 28|2r10 7r10 20r28
+X 15 a-strbou.ads
+39K21*Bounded 914e24 28|7w18 20r36
+43i7 Max{positive} 28|20r68
+46k12*Generic_Bounded_Length 912e30 28|20r44
+50R12 Bounded_String<17|47R9> 28|21r22[20]
+63V16 To_Bounded_String{50R12[28|20]} 28|31s26[20]
+67V16 To_String{string} 28|32s51[20]
+X 18 a-strunb.ads
+76K21*Unbounded 489e26 28|2w18
+X 19 a-textio.ads
+49K13*Text_IO 471e16 28|1w10 35r14 39r14 62r14 64r14 68r11 69r11 70r11 71r11
+. 72r11 73r11
+263U14*Put_Line 28|35s22 39s22 62s22 64s22 68s19 69s19 70s19 71s19 72s19
+. 73s19
+X 21 getinput.ads
+6K9*GetInput 11e13 28|3w6 32r20
+10V13*getModelFromFile(27|19R9) 28|32s29
+X 26 log.ads
+8K9*Log 50e8 28|5w6
+X 27 model.ads
+8K9*Model 63e10 28|4w6 24r23
+12A9*TRACK_ARR(52|24R9)<integer>
+14A9*STEERING_ARR(29|21R9)<integer>
+16A9*TRAIN_ARR(53|23R9)<integer>
+19R9*Simulation_Model 26e17 28|24r29
+23a10*steer{14A9} 28|49r27 51r20 51r76
+24a10*track{12A9} 28|54r27 56r20 56r70
+25a10*train{16A9} 28|60r27 63r20 63r70
+X 28 simulation_start.adb
+19U11*simulation_start 19b11 75t4
+20K12 Bstr[15|46] 21r17 31r21 32r46
+21r4 input_path{15|50R12[20]} 31m7 32r61
+22b4 talking_mode{boolean} 36m10 40m10
+23b4 proceed{boolean} 28m4 37m10 41m10 45r7
+24p4 model_ptr(27|19R9) 32m7 49r17 51r10 51r66 51r86 54r17 56r10 56r60 56r80
+. 60r17 63r10 63r60 63r80
+49i11 it{integer} 51r26 51r82
+54i11 it{integer} 56r26 56r76
+60i11 it{integer} 62r81 63r26 63r76 64r70
+X 29 steering.ads
+7K9*steering 28|9w6 51r44 29|33e13
+13T14*SteeringTask 28|51r53 29|18e20
+21R9*STEERING
+26p10*s_task(13T14) 28|51m30
+X 41 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 52 track.ads
+7K9*track 28|10w6 56r44 52|41e10
+15T14*TrackTask 28|56r50 52|20e17
+24R9*TRACK
+31p10*t_task(15T14) 28|56m30
+X 53 train.ads
+6K9*train 28|8w6 63r44 53|44e10
+12T14*TrainTask 28|63r50 53|19e17
+23R9*TRAIN
+34p10*t_task(12T14) 28|63m30
+

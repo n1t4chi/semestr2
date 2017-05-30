@@ -1,0 +1,165 @@
+//menu labels
+MENU_FILE###File
+MENU_FILE_EXIT###Exit
+MENU_FILE_CLEAR###Clear
+MENU_FILE_NEW###New figure
+MENU_FILE_LOAD###Load
+MENU_FILE_SAVE###Save
+
+MENU_CONFIG###Options
+MENU_CONFIG_FIGURE###Figure
+MENU_CONFIG_FIGURE_BORDER_COLOUR###Border colour
+MENU_CONFIG_FIGURE_BORDER_THICK###Border thickness
+MENU_CONFIG_FIGURE_FILL_COLOUR###Fill colour
+
+MENU_CONFIG_FONT###Font
+MENU_CONFIG_FONT_COLOUR###Colour
+MENU_CONFIG_FONT_SIZE###Size
+MENU_CONFIG_FONT_TYPE###Type
+
+MENU_CONFIG_WINDOW###Window
+MENU_CONFIG_WINDOW_BACKGROUND###Background Colour
+MENU_CONFIG_WINDOW_GRID###Grid
+MENU_CONFIG_WINDOW_BORDER###Borders
+MENU_CONFIG_WINDOW_RESET###Reset view
+MENU_CONFIG_WINDOW_LANGUAGE###Language
+
+MENU_HELP###Help
+MENU_HELP_HELP###Help 
+MENU_HELP_ABOUT###About
+
+//File handling
+FILE_LOAD_TITLE###Loading files
+FILE_LOAD_ASK_TO_SAVE###Want to save figures? You will lose current progress if you do not do that.
+SAVE_FILE_DESC###Save files
+FILE_CANNOT_LOAD###Can't load file. Try another.
+FILE_CANNOT_SAVE###Can't save to file. Try another.
+FILE_LOAD_BAD_FIGURE###Atleast one of figures data was invalid.
+FILE_SAVE_SUCCESS###Saving to file was successful.
+FILE_SAVE_SUCCESS_TITLE###Saving successful
+
+//specific dialog questions
+EXIT_ASK###Want to save before closing application?
+CLEAR_ASK###Do you really want to clear all figures?
+FONT_PICK_TYPE_MESSAGE###Pick font family.
+FONT_PICK_SIZE_MESSAGE###Pick font size.
+WINDOW_BORDER_MESSAGE###Pick policy of drawing borders.
+FIGURE_BORDER_PICK_THICKNESS###Pick default thickness of figure borders.
+FIGURE_SPECIFIC_BORDER_PICK_THICKNESS###Pick thickness of this figure borders.
+DELETE_FIGURE_MESSAGE###Do you really want to delete this figure?
+SCALE_TYPE###Choose type of scaling.
+SCALE_INPUT_X###Enter value of scaling on X axis.
+SCALE_INPUT_Y###Enter value of scaling on Y axis. Default value is same as for X axis.
+PICK_LANGUAGE###Pick one of languages below. It will take mostly effect after restarting application.
+
+//specific dialog answers
+EXIT_YES###Closing application.
+CLEAR_YES###Clearing figures.
+COLOUR_PICK_SUCCESS###Colour picked:
+FONT_PICK_TYPE_SUCCESS###Font family picked:
+TRUE###True
+FALSE###False
+YES###TAK
+NO###NIE
+CANCEL###Cancel
+
+
+//general dialog messages
+ANSWER_CANCEL_MESSAGE###Task cancelled.
+WRONG_INPUT_MESSAGE###Invalid input. Try again?
+PICK_FIGURE_TYPE###Pick one of figures below.
+NEW_FIGURE_INFO###Use custom style for this figure?
+NEW_FIGURE_PICK_BORDER###Pick thickness of a border.
+NEW_FIGURE_ERROR###Something went wrong when creating new figure. Try again
+CANCEL_FIGURE_TITLE###Do you really want to cancel creating new figure?
+BORDER_COLOUR###Figure border Colour
+FILL_COLOUR###Figure fill Colour
+MENU_CONFIG_RESET_CONFIG###Reset configuration
+RESET_CONFIG###Changed configuration to default. Full effect will take place after reopening application.
+BORDER_THICKNESS###Figure border thickness
+ERROR_FIGURE_CREATION###There was problem with creating figures.
+
+//general dialog titles
+CANCEL_FIGURE###Cancel creation
+CONFIRM_TITLE###Confirm your request
+ANSWER_YES_TITLE###Confirmed
+SUCCESS_TITLE###Success
+ANSWER_CANCEL_TITLE###Cancelled
+COLOUR_PICK_TITLE###Pick colour
+ERROR_TITLE###Error
+FONT_PICK_SIZE_TITLE###Pick font size
+FONT_PICK_TYPE_TITLE###Pick font family
+BOOLEAN_INPUT_TITLE###Pick
+FIGURE_BORDER_PICK_THICKNESS_TITLE#Pick figure border thickness
+DELETE_FIGURE_TITLE###Deleting figure
+SCALE_INPUT_TITLE###Scaling figure
+PICK_FIGURE_TITLE###Pick figure
+NEW_FIGURE_INFO_TITLE###Pick style.
+NEW_FIGURE_BORDER_COLOUR_TITLE###Pick border colour.
+NEW_FIGURE_BORDER_THICK_TITLE###Pick border thickness.
+NEW_FIGURE_FILL_COLOUR_TITLE###Pick fill colour.
+RESET_CONFIG_TITLE###Configuration changed to default
+//Figure
+AREA###area
+PERIMETER###perimeter
+FIGURE_LOCK_CIRCLE###lock figure as circle
+FIGURE_LOCK_POSITION###lock position
+FIGURE_LOCK_SIZE###lock size
+FIGURE_POINT###point
+FIGURE_POINT_ADD###add
+FIGURE_POINT_REMOVE###remove
+FIGURE_POLYGON_LOOK###appearance
+FIGURE_BORDER_COLOUR###border colour
+FIGURE_BORDER_THICKNESS###border thickness
+FIGURE_FILL_COLOUR###fill colour
+FIGURE_REMOVE###remove polygon
+FIGURE_SCALE###rescale
+FIGURE_ROTATE###rotate
+SCALE_ABSOLUTE###Absolutely from point (0,0)
+SCALE_POINT###Relatively from point (0,0) of figure
+SCALE_CENTRE###Relatively from Centre of polygon
+SCALE_MOUSE_FIGURE###From where popup menu was opened, relatively to this figure.
+SCALE_MOUSE_CONTAINER###From where popup menu was opened, absolutely to point (0,0)
+
+QUADRILATERAL_LOCK_RIGHT###lock right angles
+QUADRILATERAL_LOCK_PARALLEL###lock parallel sides
+QUADRILATERAL_LOCK_EQUILATERAL###lock equilateral sides
+
+//Figure names
+PARALLELOGRAM###parallelogram
+RHOMB###rhomb
+RECTANGLE###rectangle
+SQUARE###square
+QUADRILATERAL###quadrilateral
+
+
+FIGURES###Figures
+POLYGON###polygon
+ELLIPSE###ellipse
+CIRCLE###circle
+EQUILATERAL###equilateral
+HECTOGON###hectagon
+20ALONE###icosa
+20TENS###icosi
+30TENS###triaconta
+40TENS###tetraconta
+50TENS###pentaconta
+60TENS###hexaconta
+70TENS###heptaconta
+80TENS###octaconta
+90TENS###enneaconta
+POLYGON_SUFFIX###gon
+1SINGLES###hena
+2SINGLES###di
+3SINGLES###tri
+4SINGLES###tetra
+5SINGLES###penta
+6SINGLES###hexa
+7SINGLES###hepta
+8SINGLES###octa
+9SINGLES###ennea
+POLYGON_CONJUNCTION###kai
+MONOGON###monogon
+DECA_SUFIX###deca
+11DECA_PREFIX###hen
+12DECA_PREFIX###do

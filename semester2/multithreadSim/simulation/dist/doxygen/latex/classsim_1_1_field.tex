@@ -1,0 +1,169 @@
+\hypertarget{classsim_1_1_field}{}\section{sim.\+Field Class Reference}
+\label{classsim_1_1_field}\index{sim.\+Field@{sim.\+Field}}
+Inheritance diagram for sim.\+Field\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsim_1_1_field}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classsim_1_1_field_a6a42c9b7dfcbb948ccf89351358575fd}{set\+Speed} (int speed)
+\item 
+void \hyperlink{classsim_1_1_field_abeb32b6171955cae5e65a1c2f0d9819a}{set\+Colour\+Change\+Chance} (double chance)
+\item 
+int \hyperlink{classsim_1_1_field_aacac61a31d2b8da325e306f4040e7929}{get\+Speed} ()
+\item 
+void \hyperlink{classsim_1_1_field_af65ffe349f271f67977fa98707711908}{set\+Neighbour} (\hyperlink{classsim_1_1_field}{Field} neighbour)
+\item 
+Color \hyperlink{classsim_1_1_field_a5ad0b86ec796915ff1588c37937b58b6}{get\+Colour} ()
+\item 
+void \hyperlink{classsim_1_1_field_ae0f6d5b684a2cc8800a6cf6c3763cad3}{change\+Colour} ()
+\item 
+void \hyperlink{classsim_1_1_field_a4efbcf3a218e4aa1ef448ce7b145e0a2}{Schedule\+Field} ()
+\item 
+void \hyperlink{classsim_1_1_field_a1d7072dab1f7a54d9ca0698e03edb6b6}{Stop\+Field} ()
+\item 
+\hyperlink{classsim_1_1_field_ae7740288b2977c923876876936a8a3e7}{Field} (Random rand, double colour\+\_\+change\+\_\+chance, int speed, Reentrant\+Lock super\+\_\+lock)  throws Illegal\+Argument\+Exception
+\item 
+void {\bfseries run} ()\hypertarget{classsim_1_1_field_a45d95ea1b7811cafdc14d0f0a79385d8}{}\label{classsim_1_1_field_a45d95ea1b7811cafdc14d0f0a79385d8}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Read\+Write\+Lock \hyperlink{classsim_1_1_field_a6f067507d7109db5ec9f1bcb967c9a8c}{lock}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries paint\+Component} (Graphics g)\hypertarget{classsim_1_1_field_a3cab9d793a3f7d165b6ce8b78dbf7c9a}{}\label{classsim_1_1_field_a3cab9d793a3f7d165b6ce8b78dbf7c9a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class of field that changes its colour depending on neighbours or at random. To Start chaning it needs to be executed at fixed rate, best at \hyperlink{classsim_1_1_field_aacac61a31d2b8da325e306f4040e7929}{get\+Speed()} speed. \begin{DoxyAuthor}{Author}
+n1t4chi 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{sim\+::\+Field@{sim\+::\+Field}!Field@{Field}}
+\index{Field@{Field}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{Field(\+Random rand, double colour\+\_\+change\+\_\+chance, int speed, Reentrant\+Lock super\+\_\+lock)}{Field(Random rand, double colour_change_chance, int speed, ReentrantLock super_lock)}}]{\setlength{\rightskip}{0pt plus 5cm}sim.\+Field.\+Field (
+\begin{DoxyParamCaption}
+\item[{Random}]{rand, }
+\item[{double}]{colour\+\_\+change\+\_\+chance, }
+\item[{int}]{speed, }
+\item[{Reentrant\+Lock}]{super\+\_\+lock}
+\end{DoxyParamCaption}
+) throws Illegal\+Argument\+Exception}\hypertarget{classsim_1_1_field_ae7740288b2977c923876876936a8a3e7}{}\label{classsim_1_1_field_ae7740288b2977c923876876936a8a3e7}
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em rand} & R\+NG. \mbox{[}must not be null pointer\mbox{]} \\
+\hline
+{\em colour\+\_\+change\+\_\+chance} & chance of field changing its colour randomly. \mbox{[}must be positive\mbox{]} \\
+\hline
+{\em speed} & Speed of changing colour. \mbox{[}must be within \mbox{[}0,1\mbox{]} range\mbox{]} \\
+\hline
+{\em super\+\_\+lock} & Super lock when all fields properties are being changed. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & if given arguments are not correct. \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Member Function Documentation}
+\index{sim\+::\+Field@{sim\+::\+Field}!change\+Colour@{change\+Colour}}
+\index{change\+Colour@{change\+Colour}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{change\+Colour()}{changeColour()}}]{\setlength{\rightskip}{0pt plus 5cm}void sim.\+Field.\+change\+Colour (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_ae0f6d5b684a2cc8800a6cf6c3763cad3}{}\label{classsim_1_1_field_ae0f6d5b684a2cc8800a6cf6c3763cad3}
+Changes colour of this field, either randomly or from average neighbour colour. \index{sim\+::\+Field@{sim\+::\+Field}!get\+Colour@{get\+Colour}}
+\index{get\+Colour@{get\+Colour}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{get\+Colour()}{getColour()}}]{\setlength{\rightskip}{0pt plus 5cm}Color sim.\+Field.\+get\+Colour (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_a5ad0b86ec796915ff1588c37937b58b6}{}\label{classsim_1_1_field_a5ad0b86ec796915ff1588c37937b58b6}
+Returns current colour. \begin{DoxyReturn}{Returns}
+Current colour. 
+\end{DoxyReturn}
+\index{sim\+::\+Field@{sim\+::\+Field}!get\+Speed@{get\+Speed}}
+\index{get\+Speed@{get\+Speed}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{get\+Speed()}{getSpeed()}}]{\setlength{\rightskip}{0pt plus 5cm}int sim.\+Field.\+get\+Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_aacac61a31d2b8da325e306f4040e7929}{}\label{classsim_1_1_field_aacac61a31d2b8da325e306f4040e7929}
+Returns speed of this field \mbox{[}in miliseconds\mbox{]}. \begin{DoxyReturn}{Returns}
+speed of this field. 
+\end{DoxyReturn}
+\index{sim\+::\+Field@{sim\+::\+Field}!Schedule\+Field@{Schedule\+Field}}
+\index{Schedule\+Field@{Schedule\+Field}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{Schedule\+Field()}{ScheduleField()}}]{\setlength{\rightskip}{0pt plus 5cm}void sim.\+Field.\+Schedule\+Field (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_a4efbcf3a218e4aa1ef448ce7b145e0a2}{}\label{classsim_1_1_field_a4efbcf3a218e4aa1ef448ce7b145e0a2}
+Schedules this thread for repeated execution \index{sim\+::\+Field@{sim\+::\+Field}!set\+Colour\+Change\+Chance@{set\+Colour\+Change\+Chance}}
+\index{set\+Colour\+Change\+Chance@{set\+Colour\+Change\+Chance}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{set\+Colour\+Change\+Chance(double chance)}{setColourChangeChance(double chance)}}]{\setlength{\rightskip}{0pt plus 5cm}void sim.\+Field.\+set\+Colour\+Change\+Chance (
+\begin{DoxyParamCaption}
+\item[{double}]{chance}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_abeb32b6171955cae5e65a1c2f0d9819a}{}\label{classsim_1_1_field_abeb32b6171955cae5e65a1c2f0d9819a}
+Sets new random colour change chance. 
+\begin{DoxyParams}{Parameters}
+{\em chance} & New random colour change chance. \\
+\hline
+\end{DoxyParams}
+\index{sim\+::\+Field@{sim\+::\+Field}!set\+Neighbour@{set\+Neighbour}}
+\index{set\+Neighbour@{set\+Neighbour}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{set\+Neighbour(\+Field neighbour)}{setNeighbour(Field neighbour)}}]{\setlength{\rightskip}{0pt plus 5cm}void sim.\+Field.\+set\+Neighbour (
+\begin{DoxyParamCaption}
+\item[{{\bf Field}}]{neighbour}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_af65ffe349f271f67977fa98707711908}{}\label{classsim_1_1_field_af65ffe349f271f67977fa98707711908}
+Adds new neighbour. 
+\begin{DoxyParams}{Parameters}
+{\em neighbour} & New neighbour. \\
+\hline
+\end{DoxyParams}
+\index{sim\+::\+Field@{sim\+::\+Field}!set\+Speed@{set\+Speed}}
+\index{set\+Speed@{set\+Speed}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{set\+Speed(int speed)}{setSpeed(int speed)}}]{\setlength{\rightskip}{0pt plus 5cm}void sim.\+Field.\+set\+Speed (
+\begin{DoxyParamCaption}
+\item[{int}]{speed}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_a6a42c9b7dfcbb948ccf89351358575fd}{}\label{classsim_1_1_field_a6a42c9b7dfcbb948ccf89351358575fd}
+Sets new random speed of this field within range of \mbox{[}s/2 , 3/2$\ast$s\mbox{]}, where s is given average speed. 
+\begin{DoxyParams}{Parameters}
+{\em speed} & Average speed. \\
+\hline
+\end{DoxyParams}
+\index{sim\+::\+Field@{sim\+::\+Field}!Stop\+Field@{Stop\+Field}}
+\index{Stop\+Field@{Stop\+Field}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{Stop\+Field()}{StopField()}}]{\setlength{\rightskip}{0pt plus 5cm}void sim.\+Field.\+Stop\+Field (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classsim_1_1_field_a1d7072dab1f7a54d9ca0698e03edb6b6}{}\label{classsim_1_1_field_a1d7072dab1f7a54d9ca0698e03edb6b6}
+Stops this field. 
+
+\subsection{Member Data Documentation}
+\index{sim\+::\+Field@{sim\+::\+Field}!lock@{lock}}
+\index{lock@{lock}!sim\+::\+Field@{sim\+::\+Field}}
+\subsubsection[{\texorpdfstring{lock}{lock}}]{\setlength{\rightskip}{0pt plus 5cm}Read\+Write\+Lock sim.\+Field.\+lock}\hypertarget{classsim_1_1_field_a6f067507d7109db5ec9f1bcb967c9a8c}{}\label{classsim_1_1_field_a6f067507d7109db5ec9f1bcb967c9a8c}
+Lock for reading/writing. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/sim/Field.\+java\end{DoxyCompactItemize}

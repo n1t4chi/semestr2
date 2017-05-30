@@ -1,0 +1,262 @@
+V "GNAT Lib v2016"
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P SS ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_ANONYMOUS_ALLOCATORS
+RV NO_DELAY
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_SELECT_STATEMENTS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLICIT_LOOPS
+RV SPARK_05
+
+U dijkstra%b		dijkstra.adb		c8738634 NE OO PK IL
+W ada%s			ada.ads			ada.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W interfaces%s		interfac.ads		interfac.ali
+W system%s		system.ads		system.ali
+W system.address_image%s  s-addima.adb		s-addima.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+W track%s		track.adb		track.ali
+
+U dijkstra%s		dijkstra.ads		2e24233c EE NE OO PK IL
+W model%s		model.adb		model.ali
+W steering%s		steering.adb		steering.ali
+W train%s		train.adb		train.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-charac.ads		20160516092930 2d3ec45b ada.characters%s
+D a-chlat1.ads		20160516092930 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20160516092926 61e5e089 ada.containers%s
+D a-cohata.ads		20160516092932 80a8c839 ada.containers.hash_tables%s
+D a-cohase.ads		20160516092928 d0a51871 ada.containers.hashed_sets%s
+D a-conhel.ads		20160516092928 20298884 ada.containers.helpers%s
+D a-convec.ads		20160516092932 7e2b0fdf ada.containers.vectors%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20160516092928 7c7305e9 ada.iterator_interfaces%s
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-string.ads		20160516092930 90ac6797 ada.strings%s
+D a-strmap.ads		20160516092930 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20160516092928 3f91d4c5 ada.strings.unbounded%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D dijkstra.ads		20170424203434 920405bc dijkstra%s
+D dijkstra.adb		20170425210500 bfe42c5e dijkstra%b
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
+D model.ads		20170527191540 eb809159 model%s
+D station.ads		20170530110852 b43b2778 station%s
+D steering.ads		20170425093334 511a4152 steering%s
+D system.ads		20160516092930 2da59038 system%s
+D s-addima.ads		20160516092928 a1ec9d3a system.address_image%s
+D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-tasinf.ads		20160516092930 601f6b72 system.task_info%s
+D s-taspri.ads		20160516092930 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-taprob.ads		20160516092928 502249e3 system.tasking.protected_objects%s
+D s-tpoben.ads		20160516092932 b641f948 system.tasking.protected_objects.entries%s
+D s-tasren.ads		20160516092926 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20160516092928 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+D s-win32.ads		20160516092926 b7f96285 system.win32%s
+D track.ads		20170521144948 7c12c738 track%s
+D train.ads		20170529182320 06baf68b train%s
+D worker.ads		20170529201636 c9351b8a worker%s
+X 1 ada.ads
+16K9*Ada 19e8 22|1r6
+X 7 a-conhel.ads
+84R12 Reference_Control_Type<10|43R9>
+X 12 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[8|72]>
+X 19 a-textio.ads
+49K13*Text_IO 471e16 22|1w10
+X 21 dijkstra.ads
+6K9*dijkstra 15l5 15e13 22|7b14 433l5 433t13
+9A9*ArrN(natural)<integer> 22|18r22 107r19
+10A9*ArrF(float)<integer> 22|17r22 106r19
+11A9*ArrS(29|40R9)<integer> 22|16r24 108r21
+13V13*findTracklistTo(65|43A9) 13>29 13>51 13>69 13>97 13>120 13^162 22|10b13
+. 427t7
+13i29 train_id{positive} 22|10b29 34r47 76r64 83r49 94r61 125r49 146r49 225r72
+. 320r52 321r70 325r52 326r70 394r52 403r73 408r52 418r73
+13b51 block{boolean} 22|10b51 71r10 121r13 225r20 318r16 344r13 387r13
+13i69 start_track_id{positive} 22|10b69 36r49 65r19 353r19
+13i97 target_id{positive} 22|10b97 40r29 42r45 46r45 346r26
+13e120 target_type{65|46E9} 22|10b120 39r10 41r13 45r13 344r36
+13p162 model_ptr(27|26R9) 22|10b162 34r71 36r79 42r57 46r57 50r76 72r20 74r16
+. 76r19 83r19 83r66 83r144 92r20 94r16 101r22 123r23 125r19 125r66 125r144
+. 130r38 131r25 131r72 145r23 146r19 148r33 149r22 149r69 218r23 225r42 225r88
+. 225r131 227r22 228r27 230r27 245r25 246r28 247r41 247r77 249r41 319r26
+. 320r22 320r65 321r22 324r26 325r22 325r65 326r22 360r23 367r21 367r75 368r22
+. 368r74 370r30 393r26 394r22 394r65 397r38 403r25 407r26 408r22 408r65 411r61
+. 412r47 412r94 418r25
+X 22 dijkstra.adb
+11p7 tl(65|43A9) 64m10 65r10 66r17 345m13 346r13 348m13 353r10 358r13 370r19
+. 396r33 397r28 410r33 411r53 426r14
+14p7 steer(29|40R9) 197m13 199r16 207r29 225r119 225r160 227r53 255r35 262r39
+16p7 steers(21|11A9) 108m7 127r30 130r22 148r19 161r20 162r21 170r13 197r22
+. 206r13 206r30 207r13 235r25 285r16 290r19 294r46 337r19 367r52 368r51 377r19
+17p7 dist(21|10A9) 106m7 132r25 134r25 150r22 152r22 169r13 190r19 191r28
+. 209r13 209r28 210r13 260r32 261r25 292r28 296r28
+18p7 prev(21|9A9) 107m7 137r22 155r19 168r13 212r26 213r13 213r28 214r13
+. 262r25 334r16 337r35 367r104 368r105 377r35
+19i7 d_length{natural} 78m19 78r31 85m16 85r28 101m10 106r27 107r27 108r29
+. 167r45 284r40 336r43 376r43
+20i7 d_it{natural} 126m19 126r27 127r22 130r29 132r30 134r30 137r27 147m19
+. 147r27 161r13 162m13 167r35 173r16 188r43 206r37 207r20 209r33 210r18 213r33
+. 214r18 216m13 216r21 234r50
+22p7 train_ptr(65|61R9) 34m7 246r60 249r77 320r91 325r91 394r91 408r91
+24p7 start_track(64|43R9) 36m7 61r11 61r53 62r38 62r82 131r50 131r97 149r47
+. 149r94
+26i7 target_steer_id{natural} 40m10 43m10 48m13 51m13 61r34 61r74 83r91 125r91
+. 290r35
+27i7 target_steer_id_2{natural} 44m10 52m13 62r10 62r61 62r103 83r117 83r169
+. 125r117 125r169 294r19 294r62 298r38
+29p7 target_track_ptr(64|43R9) 42m10 43r29 44r31 50m13 51r32 52r34
+30p7 target_train_ptr(65|61R9) 46m10 47r13 48r32 50r48
+72i14 it{integer} 74r32 76r35 83r35 83r82 83r160
+92i14 it{integer} 94r32
+112f10 min_d{float} 186m13 190r31 191m19 210r27 255r55
+113i10 min_i{natural} 187m13 192m19 197r29 206r20 209r18 212r31 213r18
+114i10 copy_prev{natural} 212m13 214r27
+115i10 v{natural} 228m22 230m22 235r42
+116b10 is_v{boolean} 232m19 236m25 243r22
+117i10 it_v{natural} 233m19 237m25 260r37 261r30 262r30
+118f10 del{float} 247m28 249m28 252m25 255r63
+119f10 alt{float} 255m22 260r25 261r39
+123i17 it{integer} 125r35 125r82 125r160 130r54 131r41 131r88
+145i17 it{integer} 146r35 148r26 148r49 149r38 149r85 150r27 152r27 155r24
+167i14 it{integer} 168r18 169r18 170r20
+188i17 it{integer} 190r24 191r33 192r28
+218i17 it{integer} 225r58 225r104 225r147 227r38 228r43 230r43 245r41 246r44
+. 247r57 247r93 249r57
+234i23 it2{integer} 235r32 237r33
+277f10 min_1{float} 292m19 311r30 312m13
+278i10 min_i_1{natural} 291m19 298r19 313m13 315r21 316r13 334r21 337r40
+. 338m19 351m10 367r59 367r109 368r58 368r110 377r40 378m19
+279i10 min_i_2{natural} 295m19 298r63 311r13 313r24 315m10 351r21
+280f10 min_2{float} 296m19 311r38 312r22
+282i10 len{positive} 335m13 335r20 345r40 346r16 348r40 356r34
+284i14 it{integer} 285r23 290r26 291r30 292r33 294r53 295r30 296r33
+319i20 it{integer} 320r38 320r81 321r38
+324i20 it{integer} 325r38 325r81 326r38
+336i17 it{integer} 337r26 338r30
+356i14 itt{integer} 358r16 370r22
+360i17 it{integer} 367r37 367r91 368r38 368r90 370r46
+376i17 it{integer} 377r26 378r30
+389b16 found{boolean} 395m22 398m28 402r25 409m22 413m28 417r25
+390p16 track_ptr(64|43R9) 411m25 412r28 412r73
+393i20 it{integer} 394r38 394r81 397r54 403r41
+396i26 itt{integer} 397r31
+407i20 it{integer} 408r38 408r81 412r63 412r110 418r41
+410i26 itt{integer} 411r56
+X 27 model.ads
+10K9*Model 21|3w6 13r181 22|10r181 34r20 36r22 42r30 46r30 50r33 411r38 27|97e10
+14A9*TRACK_ARR(64|43R9)<integer>
+16A9*STEERING_ARR(29|40R9)<integer>
+26R9*Simulation_Model 21|13r187 22|10r187 27|41e17
+33a10*steer{16A9} 22|72r30 74r26 76r29 83r29 83r76 83r154 101r32 123r33 125r29
+. 125r76 125r154 130r48 131r35 131r82 145r33 146r29 148r43 149r32 149r79
+. 324r36 325r32 325r75 326r32 407r36 408r32 408r75 412r57 412r104 418r35
+34a10*track{14A9} 22|92r30 94r26 218r33 225r52 225r98 225r141 227r32 228r37
+. 230r37 245r35 246r38 247r51 247r87 249r51 319r36 320r32 320r75 321r32 360r33
+. 367r31 367r85 368r32 368r84 370r40 393r36 394r32 394r75 397r48 403r35
+53V13*getTrain(65|61R9) 22|34s26 46s36
+53i22 train_id{positive} 22|34r35
+53p44 model_ptr(26R9) 22|34r58
+56V13*getTrack(64|43R9) 22|36s28 42s36 50s39 411s44
+56i22 track_id{positive} 22|36r37
+56p44 model_ptr(26R9) 22|36r66
+X 29 steering.ads
+8K9*steering 21|1w6 11r52 22|14r22 29|57e13
+10R9*STEERING 21|11r61 22|14r31 29|54e17
+30Y13 allowServiceTrain 22|76s46
+33Y13 freeFromServiceTrain 22|326s49 418s52
+40R9*STEERING
+42i10*id{positive} 22|83r86 83r164 125r86 125r164 131r45 131r92 149r42 149r89
+. 225r125 225r166 227r59 235r37 262r45 290r30 294r57 325r85 337r30 367r68
+. 368r67 377r30 408r85 412r67 412r114
+43i10*min_delay{positive} 22|255r41
+44i10*used_by{natural} 22|74r36 83r39 125r39 146r39 325r42 408r42
+50p10*s_task(23T14) 22|76r39 326r42 418r45
+X 30 system.ads
+37K9*System 22|3r6 30|200e11
+X 31 s-addima.ads
+39V17*Address_Image{string} 22|3w13
+X 45 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 64 track.ads
+7K9*track 22|2w6 2r17 24r28 29r33 245r54 390r35 64|73e10
+10n24*Track_Type_Track{10E9} 22|245r60
+11R9*TRACK 22|24r34 29r39 390r41 64|71e17
+33Y13 allowServiceTrain 22|94s43
+36Y13 freeFromServiceTrain 22|321s49 403s52
+43R9*TRACK
+43e16*t_type{10E9} 22|245r45
+45i10*id{positive} 22|320r85 370r50 394r85 397r58
+47i10*st_start{positive} 22|44r48 52r51 61r23 62r50 131r109 149r106 225r108
+. 227r42 230r47 367r41 368r94 412r83
+49i10*st_end{positive} 22|43r46 51r49 61r65 62r94 131r62 149r59 225r151 228r47
+. 367r95 368r42 412r38
+52i10*used_by{natural} 22|225r62 320r42 394r42
+60p10*t_task(26T14) 22|94r36 321r42 403r45
+63i16*distance{positive} 22|247r61 249r61
+64i16*max_speed{positive} 22|246r48 247r97
+X 65 train.ads
+8K9*train 21|2w6 2r17 22|22r26 30r33 65|98e10
+11R9*TRAIN 22|22r32 30r39 65|92e16
+43A9*TRACK_ARRAY(integer)<integer> 21|13r219 22|10r219 11r19 64r20 345r23
+. 348r23
+46E9*Train_History_Object_Type 21|13r134 22|10r134 65|46e116
+46n40*type_Track{46E9} 22|41r27 344r50
+46n65*type_Steering{46E9} 22|39r24
+46n79*type_Train{46E9} 22|45r27
+61R9*TRAIN
+64i10*max_speed{positive} 22|246r70 249r87
+66i10*on_track{natural} 22|50r65 320r101 394r101
+67i10*on_steer{natural} 22|47r30 48r49 325r101 408r101
+

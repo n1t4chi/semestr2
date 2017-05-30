@@ -1,0 +1,9 @@
+with Ada.Text_IO;
+with Ada.Strings.Unbounded;
+
+package getFile is
+
+
+
+
+end getFile;

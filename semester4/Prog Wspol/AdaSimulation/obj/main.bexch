@@ -1,0 +1,32 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+S:\OneDrive\studia\semestr4\wspol\Simulation\simulation.gpr
+20170324150338
+[BOUND OBJECT FILES]
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\model.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\dijkstra.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\getInput.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\log.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\train.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\station.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\worker.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\track.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\steering.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\sim.o
+S:\OneDrive\studia\semestr4\wspol\Simulation\obj\main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-LS:\OneDrive\studia\semestr4\wspol\Simulation\obj\
+-LS:\OneDrive\studia\semestr4\wspol\Simulation\obj\
+-LS:/ada/gnat/lib/gcc/i686-pc-mingw32/4.9.4/adalib/
+-static
+-static-libgcc
+S:/ada/gnat/lib/gcc/i686-pc-mingw32/4.9.4/adalib/libgnarl.a
+S:/ada/gnat/lib/gcc/i686-pc-mingw32/4.9.4/adalib/libgnat.a
+-Xlinker
+--stack=0x200000,0x1000
+-mthreads

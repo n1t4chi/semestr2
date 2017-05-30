@@ -1,0 +1,367 @@
+V "GNAT Lib v2016"
+A -gnatA
+A -mtune=generic
+A -march=pentium4
+P SS ZX
+
+RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U log%b			log.adb			f1b24d55 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.calendar.formatting%s  a-calfor.adb	a-calfor.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.strings%s		a-string.ads		a-string.ali
+W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W log%s			log.adb			log.ali
+W model%s		model.adb		model.ali
+W system.concat_2%s	s-conca2.adb		s-conca2.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
+W system.concat_5%s	s-conca5.adb		s-conca5.ali
+W system.concat_6%s	s-conca6.adb		s-conca6.ali
+W system.concat_7%s	s-conca7.adb		s-conca7.ali
+W system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.img_lld%s	s-imglld.adb		s-imglld.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.val_real%s	s-valrea.adb		s-valrea.ali
+W train%s		train.adb		train.ali
+
+U log%s			log.ads			3bcf64eb EE NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W model%s		model.adb		model.ali
+W steering%s		steering.adb		steering.ali
+W track%s		track.adb		track.ali
+W train%s		train.adb		train.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-calend.ads		20160516092930 2d5f01d4 ada.calendar%s
+D a-calfor.ads		20160516092926 0a6f9afc ada.calendar.formatting%s
+D a-catizo.ads		20160516092932 409d7e5b ada.calendar.time_zones%s
+D a-charac.ads		20160516092930 2d3ec45b ada.characters%s
+D a-chlat1.ads		20160516092930 66457d31 ada.characters.latin_1%s
+D a-contai.ads		20160516092926 61e5e089 ada.containers%s
+D a-cohata.ads		20160516092932 80a8c839 ada.containers.hash_tables%s
+D a-cohase.ads		20160516092928 d0a51871 ada.containers.hashed_sets%s
+D a-conhel.ads		20160516092928 20298884 ada.containers.helpers%s
+D a-convec.ads		20160516092932 7e2b0fdf ada.containers.vectors%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20160516092928 7c7305e9 ada.iterator_interfaces%s
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-string.ads		20160516092930 90ac6797 ada.strings%s
+D a-strfix.ads		20160516092932 d07c346e ada.strings.fixed%s
+D a-strmap.ads		20160516092930 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20160516092928 3f91d4c5 ada.strings.unbounded%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092926 5421119b interfaces.c%s
+D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
+D log.ads		20170527181952 5383a8f4 log%s
+D log.adb		20170529211254 c6243bf1 log%b
+D model.ads		20170527191540 eb809159 model%s
+D station.ads		20170530110852 b43b2778 station%s
+D steering.ads		20170425093334 511a4152 steering%s
+D system.ads		20160516092930 2da59038 system%s
+D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
+D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
+D s-conca2.ads		20160516092930 02a0d7d0 system.concat_2%s
+D s-conca3.ads		20160516092932 0b705ca5 system.concat_3%s
+D s-conca5.ads		20160516092928 875e432e system.concat_5%s
+D s-conca6.ads		20160516092926 d2c72db2 system.concat_6%s
+D s-conca7.ads		20160516092926 fcc75b1f system.concat_7%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-fatflt.ads		20160516092930 11beb392 system.fat_flt%s
+D s-fatgen.ads		20160516092932 49cbaf86 system.fat_gen%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-imgint.ads		20160516092928 02dbe0c2 system.img_int%s
+D s-imglld.ads		20160516092932 f3220969 system.img_lld%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20160516092930 2e5b26a9 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-tasinf.ads		20160516092930 601f6b72 system.task_info%s
+D s-taspri.ads		20160516092930 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-tassta.ads		20160516092928 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-valrea.ads		20160516092932 fe297711 system.val_real%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+D s-win32.ads		20160516092926 b7f96285 system.win32%s
+D track.ads		20170521144948 7c12c738 track%s
+D train.ads		20170529182320 06baf68b train%s
+D worker.ads		20170529201636 c9351b8a worker%s
+X 1 ada.ads
+16K9*Ada 19e8 29|5r6 19r44 30|2r6 4r6 5r6 6r6 8r6 8r26 17r10 19r10 19r31
+. 19r61 60r10 84r13 102r13 120r13 144r16 146r16 167r13 187r13 220r7 253r7
+. 286r7 290r44 304r47 341r13 342r13 350r19 356r13 359r10 373r13 374r13 380r16
+. 384r13 387r10
+X 2 a-calend.ads
+36K13*Calendar 395e17 30|6r10 19r35 19r65
+44I9*Time<213I9>
+58V13*Clock{44I9} 30|19s74
+213I9 Time_Rep<long_long_integer>
+X 3 a-calfor.ads
+24K22*Formatting 215e28 30|6w19 19r44
+176V13*Image{string} 30|19s55
+X 10 a-conhel.ads
+84R12 Reference_Control_Type<13|43R9>
+X 11 a-convec.ads
+57R9*Vector<13|43R9>
+65R9*Cursor 30|333r21[75|57] 365r21[74|22]
+70V13*Has_Element{boolean} 30|344s29[75|57] 376s29[74|22]
+119V13*Element{75|48R9} 30|345s32[75|57] 377s32[74|22]
+287V13*First{65R9[75|57]} 30|343s28[75|57] 375s28[74|22]
+287r20 Container{57R9[75|57]} 30|343r34[75|57] 375r34[74|22]
+299U14*Next 30|353s26[75|57] 381s26[74|22]
+299r20 Position{65R9[75|57]} 30|353r31[75|57] 381r31[74|22]
+X 15 a-iteint.ads
+24h9 Forward_Iterator
+32h9 Reversible_Iterator<24R9[11|72]>
+X 16 a-reatim.ads
+39K13*Real_Time 187e18 29|5w10 19r48 30|8w10 8r30 290r48 304r51
+51O9*Time<duration> 29|19r58 30|290r58
+56O9*Time_Span<duration>
+73V14*"-"{56O9} 30|304s85
+112V13*To_Duration{duration} 30|304s61
+X 18 a-string.ads
+16K13*Strings 35e16 30|4w10 5r10 17r14
+X 19 a-strfix.ads
+18K21*Fixed 251e22 30|5w18 17r22
+217V13*Head{string} 30|17s28
+X 23 a-textio.ads
+49K13*Text_IO 471e16 30|2w10 19r14 60r14 84r17 102r17 120r17 144r20 146r20
+. 167r17 187r17 220r11 253r11 286r11 341r17 342r17 350r23 356r17 359r14 373r17
+. 374r17 380r20 384r17 387r14
+263U14*Put_Line 30|19s22 60s22 84s25 102s25 120s25 144s28 146s28 167s25 187s25
+. 220s19 253s19 286s19 341s25 342s25 350s31 356s25 359s22 373s25 374s25 380s28
+. 384s25 387s22
+X 29 log.ads
+9K9*Log 94l5 94e8 30|3w6 3r15 11b14 391l5 391t8
+12R9*Time 17e17 18r26 19r109 30|290r109 291r11 319r26 335r15 336r15 367r15
+. 368r15
+14i10*day{integer} 30|306m9 324r38
+15i10*hour{natural} 30|307m9 312m12 312r22 324r64
+16i10*minute{natural} 30|311m12 314m12 324r91
+18V13*toString{string} 18>22 30|319b13 327t7 350s78 350s103 380s74 380s99
+18r22 t{12R9} 30|319b22 324r36 324r62 324r89
+19V13*getRelativeTime{12R9} 19>29 19^65 30|290b13 318t7 348s28 349s28 378s25
+. 379s25
+19o29 current_time{16|51O9} 30|290b29 304r73
+19p65 model_ptr(31|26R9) 30|290b65 304r86 304r118
+22U14*putLine 22>22 30|15b14 23l8 23t15 31s10
+22a22 line{string} 30|15b22 17r33 19r85
+24U14*putLine 24>22 24^38 30|27b14 43l8 43t15
+24a22 line{string} 30|27b22 31r18
+24p38 model_ptr(31|26R9) 30|27b38 30r10 30r37
+27U14*printModel 27^25 27>62 30|48b14 54l8 54t18
+27p25 model_ptr(31|26R9) 30|48b25 51r21
+27e62 talking_mode{31|24E9} 30|48b62 50r10
+29U14*printModel 29^25 30|51s10 57b14 67l8 67t18
+29p25 model_ptr(31|26R9) 30|57b25 59r10 60r69 61r25 62r24 63r22 64r22 65r23
+32U14*printTrainLocations 32^34 32>71 30|128b14 134l8 134t27
+32p34 model_ptr(31|26R9) 30|128b34 131r30
+32e71 talking_mode{31|24E9} 30|128b71 130r10
+34U14*printTrainLocations 34^34 30|131s10 137b14 151l8 151t27
+34p34 model_ptr(31|26R9) 30|137b34 140r10 141r20 142r20
+37U14*printTrainStatus 37>31 37^51 37>88 30|200b14 205l8 205t24
+37i31 train_id{positive} 30|200b31 203r27
+37p51 model_ptr(31|26R9) 30|200b51 203r36
+37e88 talking_mode{31|24E9} 30|200b88 202r10
+39U14*printTrainStatus 39>31 39^51 30|194b14 197l8 197t24 203s10
+39i31 train_id{positive} 30|194b31 196r39
+39p51 model_ptr(31|26R9) 30|194b51 196r49
+41U14*printTrainStatus 41^31 41>63 30|209b14 215l8 215t24
+41p31 train_ptr(75|61R9) 30|209b31 212r27
+41e63 talking_mode{31|24E9} 30|209b63 211r10
+43U14*printTrainStatus 43^31 30|196s7 212s10 218b14 221l8 221t24
+43p31 train_ptr(75|61R9) 30|218b31 220r43
+46U14*printSteeringStatus 46>34 46^54 46>91 30|226b14 232l8 232t27
+46i34 steer_id{positive} 30|226b34 229r30
+46p54 model_ptr(31|26R9) 30|226b54 229r39
+46e91 talking_mode{31|24E9} 30|226b91 228r10
+48U14*printSteeringStatus 48>34 48^54 30|229s10 235b14 238l8 238t27
+48i34 steer_id{positive} 30|235b34 237r45
+48p54 model_ptr(31|26R9) 30|235b54 237r55
+50U14*printSteeringStatus 50^34 50>72 30|242b14 248l8 248t27
+50p34 steer_ptr(33|40R9) 30|242b34 245r30
+50e72 talking_mode{31|24E9} 30|242b72 244r10
+52U14*printSteeringStatus 52^34 30|237s7 245s10 251b14 254l8 254t27
+52p34 steer_ptr(33|40R9) 30|251b34 253r43
+55U14*printTrackStatus 55>31 55^51 55>88 30|259b14 265l8 265t24
+55i31 track_id{positive} 30|259b31 262r27
+55p51 model_ptr(31|26R9) 30|259b51 262r36
+55e88 talking_mode{31|24E9} 30|259b88 261r10
+57U14*printTrackStatus 57>31 57^51 30|262s10 268b14 271l8 271t24
+57i31 track_id{positive} 30|268b31 270r39
+57p51 model_ptr(31|26R9) 30|268b51 270r48
+59U14*printTrackStatus 59^31 59>63 30|275b14 281l8 281t24
+59p31 track_ptr(74|43R9) 30|275b31 278r27
+59e63 talking_mode{31|24E9} 30|275b63 277r10
+61U14*printTrackStatus 61^31 30|270s7 278s10 284b14 287l8 287t24
+61p31 track_ptr(74|43R9) 30|284b31 286r43
+66U14*printStations 66^28 30|62s10 177s10 183b14 190l8 190t21
+66p28 model_ptr(31|26R9) 30|183b28 185r10 186r20 187r49
+68U14*printStations 68^28 68>65 30|174b14 180l8 180t21
+68p28 model_ptr(31|26R9) 30|174b28 177r24
+68e65 talking_mode{31|24E9} 30|174b65 176r10
+71U14*printWorkers 71^27 30|65s10 157s10 163b14 170l8 170t20
+71p27 model_ptr(31|26R9) 30|163b27 165r10 166r20 167r49
+73U14*printWorkers 73^27 73>64 30|154b14 160l8 160t20
+73p27 model_ptr(31|26R9) 30|154b27 157r23
+73e64 talking_mode{31|24E9} 30|154b64 156r10
+76U14*printTrains 76^26 30|64s10 110s10 116b14 123l8 123t19
+76p26 model_ptr(31|26R9) 30|116b26 118r10 119r20 120r49
+78U14*printTrains 78^26 78>63 30|107b14 113l8 113t19
+78p26 model_ptr(31|26R9) 30|107b26 110r22
+78e63 talking_mode{31|24E9} 30|107b63 109r10
+80U14*printTracks 80^26 30|63s10 93s10 98b14 105l8 105t19
+80p26 model_ptr(31|26R9) 30|98b26 100r10 101r20 102r49
+82U14*printTracks 82^26 82>63 30|90b14 96l8 96t19
+82p26 model_ptr(31|26R9) 30|90b26 93r22
+82e63 talking_mode{31|24E9} 30|90b63 92r10
+84U14*printSteerings 84^29 30|61s10 74s10 80b14 87l8 87t22
+84p29 model_ptr(31|26R9) 30|80b29 82r10 83r20 84r49
+86U14*printSteerings 86^29 86>66 30|71b14 77l8 77t22
+86p29 model_ptr(31|26R9) 30|71b29 74r25
+86e66 talking_mode{31|24E9} 30|71b66 73r10
+88U14*printTrainTimetable 88>34 88^48 30|331b14 361t7
+88i34 id{positive} 30|331b34 339r38
+88p48 model_ptr(31|26R9) 30|331b48 338r10 339r41 348r55 349r57
+90U14*printTrackTimetable 90>34 90^48 30|363b14 390t7
+90i34 id{positive} 30|363b34 371r38
+90p48 model_ptr(31|26R9) 30|363b48 370r10 371r41 378r52 379r54
+X 30 log.adb
+83i14 it{integer} 84r65
+101i14 it{integer} 102r65
+119i14 it{integer} 120r65
+138p7 c_t(75|61R9) 142m13 143r16 144r53 144r97 144r147 146r53 146r100 146r150
+141i14 it{integer} 142r36
+166i14 it{integer} 167r66
+186i14 it{integer} 187r67
+291r7 t{29|12R9} 306m7 307m7 311m10 312m10 312r20 314m10 317r14
+295f7 sim_time{float} 304m7 306r24 307r25 309r38
+297i7 min{integer} 309m7 310r10 311r25 314r22
+332p7 train_ptr(75|61R9) 339m10 340r13 341r72 343r47
+333r7 c{11|65R9[75|57]} 343m13 344r41 345r40 353m43 353r43
+334r7 th{75|48R9} 345m16 346r20 348r44 349r44 350r55
+335r7 t_arr{29|12R9} 348m19 350r87
+336r7 t_dep{29|12R9} 349m19 350r112
+364p7 track_ptr(74|43R9) 371m10 372r13 373r72 375r47
+365r7 c{11|65R9[74|22]} 375m13 376r41 377r40 381m43 381r43
+366r7 th{74|14R9} 377m16 378r41 379r41 380r52
+367r7 t_arr{29|12R9} 378m16 380r83
+368r7 t_dep{29|12R9} 379m16 380r108
+X 31 model.ads
+10K9*Model 29|1w6 1r17 27r77 32r86 37r103 41r78 46r106 50r87 55r103 59r78
+. 68r80 73r79 78r78 82r78 86r81 30|1w6 1r17 48r77 50r25 71r81 73r25 84r34
+. 90r78 92r25 102r34 107r78 109r25 120r34 128r86 130r25 154r79 156r25 167r34
+. 174r80 176r25 187r34 196r24 200r103 202r25 209r78 211r25 220r28 226r106
+. 228r25 237r27 242r87 244r25 253r28 259r103 261r25 270r24 275r78 277r25
+. 286r28 339r23 371r23 31|97e10
+14A9*TRACK_ARR(74|43R9)<integer>
+16A9*STEERING_ARR(33|40R9)<integer>
+18A9*TRAIN_ARR(75|61R9)<integer>
+20A9*STATION_ARR(32|21R9)<integer>
+22A9*WORKER_ARR(76|19R9)<integer>
+24E9*Simulation_Mode 29|27r83 32r92 37r109 41r84 46r112 50r93 55r109 59r84
+. 68r86 73r85 78r84 82r84 86r87 30|48r83 71r87 90r84 107r84 128r92 154r85
+. 174r86 200r109 209r84 226r112 242r93 259r109 275r84 31|24e54
+24n41*Talking_Mode{24E9} 30|30r54 50r31 73r31 92r31 109r31 130r31 156r31
+. 176r31 202r31 211r31 228r31 244r31 261r31 277r31
+26R9*Simulation_Model 29|19r84 24r57 27r44 29r44 32r53 34r53 37r70 39r70
+. 46r73 48r73 55r70 57r70 66r47 68r47 71r46 73r46 76r45 78r45 80r45 82r45
+. 84r48 86r48 88r67 90r67 30|27r57 48r44 57r44 71r48 80r48 90r45 98r45 107r45
+. 116r45 128r53 137r53 154r46 163r46 174r47 183r47 194r70 200r70 226r73 235r73
+. 259r70 268r70 290r84 331r67 363r67 31|41e17
+29i10*speed{positive} 30|60r79 304r128
+31o10*start_time{16|51O9} 30|304r96
+32e10*mode{24E9} 30|30r47
+33a10*steer{16A9} 30|83r30 84r59
+34a10*track{14A9} 30|101r30 102r59
+36a10*train{18A9} 30|119r30 120r59 141r30 142r30
+37a10*station{20A9} 30|186r30 187r59
+38a10*worker{22A9} 30|166r30 167r59
+53V13*getTrain(75|61R9) 30|196s30 339s29
+56V13*getTrack(74|43R9) 30|270s30 371s29
+61V13*getSteering(33|40R9) 30|237s33
+66V13*toString{string} 30|102s40 286s34
+68V13*toString{string} 30|120s40 220s34
+70V13*toString{string} 30|84s40 253s34
+72V13*toString{string} 30|187s40
+74V13*toString{string} 30|167s40
+X 32 station.ads
+21R9*STATION
+X 33 steering.ads
+8K9*steering 29|3w6 50r53 52r53 30|242r53 251r53 33|57e13
+10R9*STEERING 29|50r62 52r62 30|242r62 251r62 33|54e17
+40R9*STEERING
+X 57 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 74 track.ads
+7K9*track 29|4w6 59r50 61r50 30|275r50 284r50 364r26 365r11 366r12 375r18
+. 376r19 377r22 381r16 74|73e10
+11R9*TRACK 29|59r56 61r56 30|275r56 284r56 364r32 74|71e17
+14R9*Track_History 30|366r18 74|19e17
+16i10*train_id{natural} 30|380r55
+17o10*arrival{16|51O9} 30|378r44
+18o10*departure{16|51O9} 30|379r44
+22K12*vec[11|46] 30|365r17 375r24 376r25 377r28 381r22
+43R9*TRACK
+45i10*id{positive} 30|373r82
+59r10*history{11|57R9[22]} 30|375r57
+X 75 train.ads
+8K9*train 29|2w6 41r50 43r50 30|7w6 7r17 138r20 209r50 218r50 332r26 333r11
+. 334r12 343r18 344r19 345r22 346r37 353r16 75|98e10
+11R9*TRAIN 29|41r56 43r56 30|138r26 209r56 218r56 332r32 75|92e16
+46n51*type_Platform{46E9} 30|346r43
+48R9*Train_History 30|334r18 75|54e17
+50o10*arrival{16|51O9} 30|348r47
+51o10*departure{16|51O9} 30|349r47
+52i10*object_id{natural} 30|350r58
+53e10*object_type{46E9} 30|346r23
+57K12*vec[11|46] 30|333r17 343r24 344r25 345r28 353r22
+61R9*TRAIN
+63i10*id{positive} 30|144r57 146r57 341r82
+66i10*on_track{natural} 30|143r20 144r101
+67i10*on_steer{natural} 30|146r104
+68i10*current_speed{natural} 30|144r151 146r154
+74r10*history{11|57R9[57]} 30|343r57
+X 76 worker.ads
+19R9*WORKER
+

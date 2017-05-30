@@ -1,0 +1,166 @@
+//menu labels
+MENU_FILE###Plik
+MENU_FILE_EXIT###Wyjście
+MENU_FILE_CLEAR###Wyczyść
+MENU_FILE_NEW###Nowa figura
+MENU_FILE_LOAD###Wczytaj
+MENU_FILE_SAVE###Zapisz
+
+MENU_CONFIG###Opcje
+MENU_CONFIG_FIGURE###Figury
+MENU_CONFIG_FIGURE_BORDER_COLOUR###Kolor ramki
+MENU_CONFIG_FIGURE_BORDER_THICK###Grubość ramki
+MENU_CONFIG_FIGURE_FILL_COLOUR###Kolor wypełnienia
+
+MENU_CONFIG_FONT###Czcionka
+MENU_CONFIG_FONT_COLOUR###Kolor
+MENU_CONFIG_FONT_SIZE###Rozmiar
+MENU_CONFIG_FONT_TYPE###Typ
+
+MENU_CONFIG_WINDOW###Okno
+MENU_CONFIG_WINDOW_BACKGROUND###Kolor okna
+MENU_CONFIG_WINDOW_GRID###Siatka
+MENU_CONFIG_WINDOW_BORDER###Ramki
+MENU_CONFIG_WINDOW_RESET###Resetuj widok
+MENU_CONFIG_WINDOW_LANGUAGE###Język
+
+
+MENU_HELP###Pomoc
+MENU_HELP_HELP###Pomoc 
+MENU_HELP_ABOUT###O programie
+
+
+//File handling
+FILE_LOAD_TITLE###Wczytywanie pliku
+FILE_LOAD_ASK_TO_SAVE###Chcesz zapisać figury? Jeżeli tego nie zrobisz utracisz aktualny stan.
+SAVE_FILE_DESC###Pliki z figurami
+FILE_CANNOT_LOAD###Nie można odczytać tego pliku. Spróbuj inny.
+FILE_CANNOT_SAVE###Nie można zapisać do tego pliku. Spróbój inny.
+FILE_LOAD_BAD_FIGURE###Dane przynajmiej jednej z figur były nieprawidłowe.
+FILE_SAVE_SUCCESS###Zapisano dane do pliku.
+FILE_SAVE_SUCCESS_TITLE###Zapisano
+
+
+
+
+//specific dialog questions
+EXIT_ASK###Czy chcesz zapisać przed wyjściem z programu?
+CLEAR_ASK###Czy napewno chcesz wyczyścic wszystkie figury?
+FONT_PICK_TYPE_MESSAGE###Wybierz czcionkę.
+FONT_PICK_SIZE_MESSAGE###Wybierz rozmiar czcionki.
+WINDOW_BORDER_MESSAGE###Wybierz czy rysować ramki.
+FIGURE_BORDER_PICK_THICKNESS###Wybierz domyślną grubość brzegów figur.
+DELETE_FIGURE_MESSAGE###Czy napewno chcesz usunąć tą figurę?
+SCALE_TYPE###Wybierz typ skalowania.
+SCALE_INPUT_X###Wpisz wartość skalowania na osi X.
+SCALE_INPUT_Y###Wpisz wartość skalowania na osi Y. Domyślna wartość jak dla osi X.
+PICK_LANGUAGE###Wybierz jeden z poniższych języków. W celu pełnego efektu należy uruchomić ponownie program.
+
+//specific dialog answers
+EXIT_YES###Zamykam program.
+CLEAR_YES###Wyczyszczono figury.
+COLOUR_PICK_SUCCESS###Wybrano kolor:
+FONT_PICK_TYPE_SUCCESS###Wybrana czcionka:
+TRUE###Prawda
+FALSE###Fałsz
+YES###TAK
+NO###NIE
+CANCEL###Anuluj
+
+//general dialog messages
+ANSWER_CANCEL_MESSAGE###Anulowano zadanie.
+WRONG_INPUT_MESSAGE###Wprowadzono błędne dane. Chcesz spróbować ponownie?
+PICK_FIGURE_TYPE###Wybierz jedną z figur.
+NEW_FIGURE_PICK_BORDER###Wybierz grubość krawędzi figury.
+NEW_FIGURE_ERROR###Coś poszło nie tak podczas tworzenia figury, spróbuj ponownie.
+CANCEL_FIGURE_TITLE###Czy napewno chcesz anulować tworzenie figur?
+NEW_FIGURE_INFO###Czy chesz wybrać własny styl dla tej figury?
+BORDER_COLOUR###Kolor ramki figury
+FILL_COLOUR###Kolor wypełnienia figury
+MENU_CONFIG_RESET_CONFIG###Resetuj ustawienia
+RESET_CONFIG###Zmieniono ustawienia na domyślne. W celu pełnego efektu należy uruchomić ponownie program.
+BORDER_THICKNESS###Grubość ramki figury
+ERROR_FIGURE_CREATION###Wystąpił problem podczas kreacji figury.
+
+//general dialog titles
+CANCEL_FIGURE###Anuluj tworzenie
+CONFIRM_TITLE###Potwierdź wybór
+ANSWER_YES_TITLE###Potwierdzono
+ANSWER_CANCEL_TITLE###Anulowano
+SUCCESS_TITLE###Udało się
+COLOUR_PICK_TITLE###Wybierz kolor
+ERROR_TITLE###Błąd
+FONT_PICK_SIZE_TITLE###Wybierz rozmiar czcionki
+FONT_PICK_TYPE_TITLE###Wybierz czcionkę
+BOOLEAN_INPUT_TITLE###Wybierz
+FIGURE_BORDER_PICK_THICKNESS_TITLE#Wybierz grubość brzegu figur
+DELETE_FIGURE_TITLE###Usuwanie figury
+SCALE_INPUT_TITLE###Skalowanie figury
+PICK_FIGURE_TITLE###Wybierz figurę.
+NEW_FIGURE_INFO_TITLE###Wybierz styl figury
+NEW_FIGURE_BORDER_COLOUR_TITLE###Wybierz kolor krawędzi.
+NEW_FIGURE_BORDER_THICK_TITLE###Wybierz grubość krawędzi.
+NEW_FIGURE_FILL_COLOUR_TITLE###Wybierz kolor wypełnienia.
+RESET_CONFIG_TITLE###Przwywrócono ustawienia domyślne.
+
+
+
+//Figure
+AREA###pole
+PERIMETER###obwód
+FIGURE_LOCK_CIRCLE###zablokuj kształt koła
+FIGURE_LOCK_POSITION###zablokuj pozycje
+FIGURE_LOCK_SIZE###zablokuj rozmiar
+FIGURE_POINT###punkt
+FIGURE_POINT_ADD###dodaj
+FIGURE_POINT_REMOVE###usuń
+FIGURE_POLYGON_LOOK###wygląd
+FIGURE_BORDER_COLOUR###kolor krawędzi
+FIGURE_BORDER_THICKNESS###grubość krawędzi
+FIGURE_FILL_COLOUR###kolor wypełnienia
+FIGURE_REMOVE###usuń figurę
+FIGURE_SCALE###przeskaluj
+FIGURE_ROTATE###obróć
+SCALE_ABSOLUTE###Bezwględnie od punktu (0,0)
+SCALE_POINT###Relatywnie od punktu (0,0) figury
+SCALE_CENTRE###Relatywnie do środka figury
+SCALE_MOUSE_FIGURE###Od miejsca otworzenia menu, relatywnie do figury.
+SCALE_MOUSE_FIGURE###Od miejsca otworzenia menu, bezwględnie do punktu (0,0)
+
+QUADRILATERAL_LOCK_RIGHT###Kąty proste
+QUADRILATERAL_LOCK_PARALLEL###Przeciwne boki równoległe
+QUADRILATERAL_LOCK_EQUILATERAL###Równe długości boków
+
+//Figure names
+PARALLELOGRAM###równoległobok
+RHOMB###romb
+RECTANGLE###prostokąt
+SQUARE###kwadrat
+QUADRILATERAL###czworokąt
+
+FIGURES###Figury
+ELLIPSE###elipsa
+CIRCLE###koło
+EQUILATERAL###równoboczny
+POLYGON###wielokąt
+1PREFIX###jedno
+2PREFIX###dwu
+3PREFIX###trzry
+4PREFIX###cztero
+5PREFIX###pięcio
+6PREFIX###sześcio
+7PREFIX###siedmio
+8PREFIX###ośmio
+9PREFIX###dziewięcio
+10PREFIX###dziesięcio
+11PREFIX###jedenasto
+12PREFIX###dwunasto
+13PREFIX###trzynasto
+14PREFIX###czternasto
+15PREFIX###piętnasto
+16PREFIX###szesnasto
+17PREFIX###siedemnasto
+18PREFIX###osiemnasto
+19PREFIX###dziewiętnasto
+20PREFIX###dwudziesto
+POLYGON_SUFIX###kąt

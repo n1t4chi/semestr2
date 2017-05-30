@@ -1,0 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package layer;
+
+/**
+ *
+ * @author n1t4chi
+ */
+public enum StrokeType {
+    LINE,DASH,DOT,DASH_DOT
+}

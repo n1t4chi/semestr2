@@ -1,0 +1,160 @@
+
+    
+   //##########################static context###################################
+
+
+
+
+   //##########################fields###########################################
+
+
+
+
+
+   //#########################methods###########################################
+    
+
+
+
+   //#########################constructors######################################
+    
+
+
+
+
+
+   //#########################overriden methods#################################
+
+
+
+
+
+            /*
+            double Dx=0;
+            double Dy=0;
+            //lets get line
+            //y=q*x+c1  which comes though A and B and 
+            boolean got_q = false;
+            double q=0;
+         
+            if((Bx-Ax)!=0){   
+                got_q=true;    
+                q = (By-Ay)/(Bx-Ax); 
+                if((By-Ay)==0){
+                    Dy = Cy;
+                }
+            }else{
+                Dx = Cx;
+            }
+            if(!got_q){
+                Dy = Cy+a;      
+                if (Line2D.linesIntersect(
+                          By, Bx, Cx , Cy //B to C
+                        , Ax, Ay, Dx, Dy)  //A to D'
+                ){
+                    System.out.println("D is in intersection");
+                    D.coordinates.setLocation(Dx,Cy-a);
+                }else{
+                    System.out.println("D is not in intersection");
+                    D.coordinates.setLocation(Dx,Dy);
+                }     
+            }else{    
+                if(q==0){
+                    Dx = Cx+a;  
+                    if (Line2D.linesIntersect(
+                              By, Bx, Cx , Cy //B to C
+                            , Ax, Ay, Dx, Dy)  //A to D'
+                    ){
+                        System.out.println("D is in intersection");
+                        D.coordinates.setLocation(Dx-a,Dy);
+                    }else{
+                        System.out.println("D is not in intersection");
+                        D.coordinates.setLocation(Dx,Dy);
+                    }   
+                }else{
+                    //mamy y = q*x + w 
+                    // Cy = q * Cx + w 
+                    double w = Cy/(q*Cx);                   
+                    //(x-Cx)^2 + (y-Cy)^2 = a^2; --> (x-Cx)^2 + (q*x+w - Cy)^2 = a^2;
+                    // h = w-Cy;
+                    double h = w - Cy;
+                    //(x-Cx)^2 + (q*x+w - Cy)^2 = a^2; --> (q^2+1)x^2 + -2Cx   
+                    
+                 */ 
+
+
+
+
+
+
+            System.out.println(" A("+Ax+","+Ay+") B("+B.coordinates.getX()+","+B.coordinates.getY()+")   C("+Cx+","+Cy+")  a="+b+"  b="+b); 
+            // finding points that are on intersection of 2 circles
+            // 1. circle: A as middle and b as radius
+            // 2. circle: C as middle and a as radius
+            // (x-Ax)^2 + (y-Ay)^2 - b^2 = (x-Cx)^2 + (y-Cy)^2 - a^2  =>
+            // => 2x(Cx-Ax) + 2y(Cy-Ay) = b^2 - a^2 - Ax^2 -Ay^2 + Cx^2 + Cy^2 =>
+            // => y = ( 2x(Ax-Cx)+ b^2 - a^2 - Ax^2 -Ay^2 + Cx^2 + Cy^2 ) / 2(Cy-Ay)   this is or line that points lie on.
+            // lets use new variables y = hx + i
+            double h = (Ax-Cx)/(Cy-Ay);
+            double i = (b*b - a*a - Ax*Ax -Ay*Ay + Cx*Cx + Cy*Cy)/(2*(Cy-Ay));
+            System.out.println("hx+i = "+h+"x+"+i); 
+            
+            //now placing it into (x-Ax)^2 + (y-Ay)^2 = b^2
+            //we get (x-Ax)^2 + (hx+i-Ay)^2 = b^2
+            //let use new variable  j = i-Ay;
+            double j = i - Ay;
+            System.out.println("j = "+j); 
+            //then we have (x-Ax)^2 + (hx+j)^2 = b^2  = > (h^2+1)x^2 + 2(h*j-Ax)x + Ax^2 + j^2 - b^2 = 0;
+            //we get a0*x^2 + a1*x + a2 = 0;
+            double a0 = h*h +1;
+            double a1 = 2*(h*j-Ax);
+            double a2 = Ax*Ax + j*j - b*b;
+            System.out.println("a0*x^2 + a1*x + a2 = "+a0+"x^2 + "+a1+"x"+a2 ); 
+            //let's get our possible Dx's
+            
+            if(a0==0){
+                if(a1==0){ //no possible outcome
+                    lock_Parallel = false;              
+                    System.out.println("Nope");
+                }else{ // we have only a1x + a2 = 0  
+                    double Dx = -a2/a1;
+                    //using y = hx+i;
+                    double Dy = h*Dx+i;  
+                    System.out.println("D = ("+Dx+","+Dy+")");
+                    D.coordinates.setLocation(Dx,Dy);
+                }
+            }else{ //solving quadratic formula
+                double delta = a1*a1 - 4*a0*a2;
+                    System.out.println("delta = "+delta);
+                if(delta < 0){
+                    lock_Parallel = false;      
+                    System.out.println("Nope");
+                }else{
+                    if(delta == 0){
+                        double Dx = -a1/(2*a0);
+                        double Dy = h*Dx+i;
+                    }else{
+                        double deltaSQRT = Math.sqrt(delta);
+                        System.out.println("sqrt delta = "+deltaSQRT);
+                        
+                        double Dx1 = (-a1 - deltaSQRT)/(2*a0);                   
+                        double Dy1 = h*Dx1+i;
+                        double Dx2 = (-a1 + deltaSQRT)/(2*a0);
+                        double Dy2 = h*Dx2+i;
+                        System.out.println("D1 = ("+Dx1+","+Dy1+")");
+                        System.out.println("D2 = ("+Dx2+","+Dy2+")");
+                        
+                        // checking if lines from Point B to C intersects with lane from point A to new D
+                        if (Line2D.linesIntersect(
+                                  B.coordinates.getX(), B.coordinates.getY(), Cx , Cy //B to C
+                                , Ax, Ay, Dx1, Dy1)  //A to D'
+                        ){
+                            System.out.println("D1 is in intersection");
+                            D.coordinates.setLocation(Dx2,Dy2);
+                            //D.coordinates.setLocation(Dx1,Dy1);    //what the hell
+                        }else{
+                            System.out.println("D2 is in intersection");
+                            D.coordinates.setLocation(Dx1,Dy1);
+                        }
+                    }
+                }
