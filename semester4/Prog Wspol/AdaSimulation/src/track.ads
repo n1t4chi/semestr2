@@ -26,6 +26,10 @@ package track is
    task type TrackTask  ( track_ptr : access TRACK ; model_ptr : access model.Simulation_Model) is
       --accepts given train thus blocking track for others
       entry acceptTrain( train_id : in Positive);
+
+
+      --for platforms notification that train about to depart from steering and is closing doors for passengers.
+     -- entry notifyAboutDeparture( train_id : in Positive) ;
       --clears out block for other trains after currently blocking train left the track.
       entry clearAfterTrain( train_id : in Positive) ;
 
@@ -52,7 +56,7 @@ package track is
          used_by : Natural :=0;
 
          out_of_order : Boolean := False;
-         reliability : Float := 0.995 ;
+         reliability : Float := 0.99995 ;
 
 
 

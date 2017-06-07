@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -19,24 +20,25 @@ func PutLineAlways(line string) {
 //prints new line depending on mode
 func PutLine(line string, model_ptr *Simulation_Model) {
 	//fmt.Println("test");
-	if model_ptr != nil && model_ptr.mode == Talking_Mode {
-		PutLineAlways(line)
-		//     elsif model_ptr = nil {
-		//        fmt.Println("null ptr");
-		//     elsif model_ptr.mode != Talking_Mode {
-		//       if model_ptr.mode = Silent_Mode {
-		//         fmt.Println("silent mode");
-		//     }else{
-		//       fmt.Println("it's bucked");
-		//   }
+	if model_ptr != nil && model_ptr.mode != Silent_Mode {
 
+		if !model_ptr.debug && strings.HasPrefix(line, "#debug#") {
+			return
+		}
+		if model_ptr.log_mode == second_task && !strings.HasPrefix(line, "#2#") {
+			return
+		}
+		if model_ptr.log_mode == third_task && !strings.HasPrefix(line, "#3#") {
+			return
+		}
+		PutLineAlways(line)
 	}
 
 }
 
 //prints model based on mode
 func PrintModel(model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintModelAlways(model_ptr)
 	}
 
@@ -47,14 +49,16 @@ func PrintModelAlways(model_ptr *Simulation_Model) {
 	if model_ptr != nil {
 		fmt.Println("Simulation speed: " + strconv.FormatInt(model_ptr.speed, 10) + "s -> 1h")
 		PrintSteeringsAlways(model_ptr)
+		PrintStationsAlways(model_ptr)
 		PrintTracksAlways(model_ptr)
 		PrintTrainsAlways(model_ptr)
+		PrintWorkersAlways(model_ptr)
 	}
 }
 
 //prints steerings based on mode
 func PrintSteerings(model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintSteeringsAlways(model_ptr)
 	}
 
@@ -71,7 +75,7 @@ func PrintSteeringsAlways(model_ptr *Simulation_Model) {
 
 //prints tracks based on mode
 func PrintTracks(model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintTracksAlways(model_ptr)
 	}
 
@@ -88,7 +92,7 @@ func PrintTracksAlways(model_ptr *Simulation_Model) {
 
 //prints trains based on mode
 func PrintTrains(model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintTrainsAlways(model_ptr)
 	}
 
@@ -103,9 +107,43 @@ func PrintTrainsAlways(model_ptr *Simulation_Model) {
 	}
 }
 
+//prints stations based on mode
+func PrintStations(model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
+	if talking_mode != Silent_Mode {
+		PrintStationsAlways(model_ptr)
+	}
+
+}
+
+//prints stations
+func PrintStationsAlways(model_ptr *Simulation_Model) {
+	if model_ptr != nil {
+		for it := 0; it < len(model_ptr.station); it++ {
+			fmt.Println(StationToString(model_ptr.station[it]))
+		}
+	}
+}
+
+//prints workers based on mode
+func PrintWorkers(model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
+	if talking_mode != Silent_Mode {
+		PrintWorkersAlways(model_ptr)
+	}
+
+}
+
+//prints workers
+func PrintWorkersAlways(model_ptr *Simulation_Model) {
+	if model_ptr != nil {
+		for it := 0; it < len(model_ptr.worker); it++ {
+			fmt.Println(WorkerToString(model_ptr.worker[it]))
+		}
+	}
+}
+
 //prints train locations based on mode
 func PrintTrainLocations(model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintTrainLocationsAlways(model_ptr)
 	}
 
@@ -135,14 +173,14 @@ func PrintTrainStatusFromIDAlways(train_id int64, model_ptr *Simulation_Model) {
 
 //prints given train status status
 func PrintTrainStatusFromID(train_id int64, model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintTrainStatusFromIDAlways(train_id, model_ptr)
 	}
 }
 
 //prints given train status status based on mode
 func PrintTrainStatus(train_ptr *Train, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintTrainStatusAlways(train_ptr)
 	}
 }
@@ -154,7 +192,7 @@ func PrintTrainStatusAlways(train_ptr *Train) {
 
 //prints given steering status based on mode
 func PrintSteeringFromIDStatus(steer_id int64, model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintSteeringStatusFromIDAlways(steer_id, model_ptr)
 	}
 }
@@ -166,7 +204,7 @@ func PrintSteeringStatusFromIDAlways(steer_id int64, model_ptr *Simulation_Model
 
 //prints given steering status based on mode
 func PrintSteeringStatus(steer_ptr *Steering, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintSteeringStatusAlways(steer_ptr)
 	}
 }
@@ -178,7 +216,7 @@ func PrintSteeringStatusAlways(steer_ptr *Steering) {
 
 //prints given track status based on mode
 func PrintTrackStatusFromID(track_id int64, model_ptr *Simulation_Model, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintTrackStatusFromIDAlways(track_id, model_ptr)
 	}
 }
@@ -190,7 +228,7 @@ func PrintTrackStatusFromIDAlways(track_id int64, model_ptr *Simulation_Model) {
 
 //prints given track status based on mode
 func PrintTrackStatus(track_ptr *Track, talking_mode Simulation_Mode) {
-	if talking_mode == Talking_Mode {
+	if talking_mode != Silent_Mode {
 		PrintTrackStatusAlways(track_ptr)
 	}
 }

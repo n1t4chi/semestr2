@@ -50,8 +50,10 @@ package body sim is
       if model_ptr /= null then
          Ada.Text_IO.Put_Line("Type '"&OPTION_HELP&"' to receive command list");
          loop
+            if model_ptr.mode = model.Silent_Mode then
+               Ada.Text_IO.Put("Type here: ");
+            end if;
 
-            --Ada.Text_IO.Put("Type here: ");
             Ada.Text_IO.Get_Line(Item => input , Last => last);
 
 
@@ -113,6 +115,7 @@ package body sim is
       proceed : Boolean := false;
       model_ptr : access Model.Simulation_Model := null;
       task_ptr : access Silent_Task := null;
+      arg_it : Positive := 2;
      -- it : Positive;
    begin
       --checks validity of arguments
@@ -120,30 +123,65 @@ package body sim is
          input_path := Bstr.To_Bounded_String(Ada.Command_Line.Argument(1));
          model_ptr := GetInput.getModelFromFile(Bstr.To_String(input_path));
 
-         if Ada.Command_Line.Argument_Count =1 or else Ada.Command_Line.Argument(2) = "talking" then
-            Ada.Text_IO.Put_Line("Selected talking mode for this simulation.");
-            model_ptr.mode := model.Talking_Mode;
-            proceed := true;
-         elsif Ada.Command_Line.Argument(2) = "waiting" then
-            Ada.Text_IO.Put_Line("Selected waiting mode for this simulation.");
-            model_ptr.mode := model.Silent_Mode;
+         if Ada.Command_Line.Argument_Count >= 2 then
+            if Ada.Command_Line.Argument(2) = "talking"  then
+               log.putLine("Selected talking mode for this simulation.");
+               model_ptr.mode := model.Talking_Mode;
+               proceed := true;
+               arg_it := 3;
+            elsif Ada.Command_Line.Argument(2) = "waiting" then
+               log.putLine("Selected waiting mode for this simulation.");
+               model_ptr.mode := model.Silent_Mode;
+               proceed := true;
+               arg_it := 3;
+            end if;
+         end if;
+         if not proceed then
+            log.putLine("Selected mixed mode for this simulation.");
+            if Ada.Command_Line.Argument_Count >= 2 and then Ada.Command_Line.Argument(2) = "mixed"  then
+               arg_it := 3;
+            end if;
             proceed := true;
          end if;
       end if;
 
-
       if proceed then --if arguments are valid then corresponding threads to each object are made
+         if model_ptr.mode /= model.Silent_Mode then
+            if Ada.Command_Line.Argument_Count >= arg_it then
+               if Ada.Command_Line.Argument(arg_it) = "all" then
+                  log.putLine("All logs will be displayed.");
+                  arg_it := 4;
+               elsif Ada.Command_Line.Argument(arg_it) = "2" then
+                  log.putLine("Only logs for second task will be displayed.");
+                  arg_it := 4;
+                  model_ptr.log_mode := model.second_task;
+               elsif Ada.Command_Line.Argument(arg_it) = "3" then
+                  log.putLine("Only logs for third task will be displayed.");
+                  arg_it := 4;
+                  model_ptr.log_mode := model.third_task;
+               else
+                  log.putLine("All logs will be displayed.");
+               end if;
+
+               if Ada.Command_Line.Argument_Count >= arg_it and then Ada.Command_Line.Argument(arg_it) = "debug" then
+                  log.putLine("Debug logs will be displayed.");
+                  model_ptr.debug := true;
+               end if;
+
+            end if;
+         end if;
+
          log.printModel(model_ptr,model_ptr.mode);
          model_ptr.start_time := Ada.Real_Time.Clock;
 
          --creating threads for steerings
          for it in model_ptr.steer'Range loop
-            log.putLine("creating SteeringTask for steering: " & Positive'Image(it),model_ptr);
+            log.putLine("creating SteeringTask for steering: " & Positive'Image(model_ptr.steer(it).id),model_ptr);
             model_ptr.steer(it).s_task := new steering.SteeringTask(model_ptr.steer(it),model_ptr);
          end loop;
          --creating threads for tracks
          for it in model_ptr.track'Range loop
-            log.putLine("creating TrackTask for track: " & Positive'Image(it),model_ptr);
+            log.putLine("creating TrackTask for track: " & Positive'Image(model_ptr.track(it).id),model_ptr);
             model_ptr.track(it).t_task := new track.TrackTask(model_ptr.track(it),model_ptr);
          end loop;
 
@@ -151,7 +189,7 @@ package body sim is
          --creating threads for trains
          for it in model_ptr.worker'Range loop
             --it := 1;
-            log.putLine("Creating WorkerTask for worker: " & Positive'Image(it),model_ptr);
+            log.putLine("Creating WorkerTask for worker: " & Positive'Image(model_ptr.worker(it).id),model_ptr);
             model_ptr.worker(it).w_task := new worker.WorkerTask(model_ptr.worker(it),model_ptr);
             --Ada.Text_IO.Put_Line("TrainTask created: " & Positive'Image(it));
          end loop;
@@ -159,7 +197,7 @@ package body sim is
          --creating threads for trains
          for it in model_ptr.station'Range loop
             --it := 1;
-            log.putLine("Creating StationTask for station: " & Positive'Image(it),model_ptr);
+            log.putLine("Creating StationTask for station: " & Positive'Image(model_ptr.station(it).id),model_ptr);
             model_ptr.station(it).s_task := new station.StationTask(model_ptr.station(it),model_ptr);
             --Ada.Text_IO.Put_Line("TrainTask created: " & Positive'Image(it));
          end loop;
@@ -167,24 +205,36 @@ package body sim is
          --creating threads for trains
          for it in model_ptr.train'Range loop
             --it := 1;
-            log.putLine("Creating TrainTask for train: " & Positive'Image(it),model_ptr);
+            log.putLine("Creating TrainTask for train: " & Positive'Image(model_ptr.train(it).id),model_ptr);
             model_ptr.train(it).t_task := new train.TrainTask(model_ptr.train(it),model_ptr);
             --Ada.Text_IO.Put_Line("TrainTask created: " & Positive'Image(it));
          end loop;
 
 
 
-       --  if model_ptr.mode = model.Silent_Mode then
-         log.putLine("Creating Console input Task for.");
-         task_ptr := new Silent_Task(model_ptr);
-        -- end if;
+         if model_ptr.mode /= model.Talking_Mode then
+            log.putLine("Creating Console input Task.");
+            task_ptr := new Silent_Task(model_ptr);
+         end if;
       else --prints information otherwise
+         Ada.Text_IO.Put_Line("usage: ");
+         Ada.Text_IO.Put_Line("<input file path> ('mixed'/'talking'/'waiting') (!waiting -> ('all'/'2'/'3')) ('debug')");
          Ada.Text_IO.Put_Line("required arguments: ");
-         Ada.Text_IO.Put_Line("<input file path> <'talking'/'waiting'>");
+         Ada.Text_IO.Put_Line("<input file path>");
          Ada.Text_IO.Put_Line("<input file path> - path where simulation can find file with model configuration");
-         Ada.Text_IO.Put_Line("<'talking'/'waiting'> - mode in which the simulation fill run:");
-         Ada.Text_IO.Put_Line("+ talking - information will be printed all the time.");
-         Ada.Text_IO.Put_Line("+ waiting - information will be printed at user request.");
+         Ada.Text_IO.Put_Line("optional arguments after required:");
+         Ada.Text_IO.Put_Line("('mixed'/'talking'/'waiting') ('all'/'2'/'3') ('debug')");
+         Ada.Text_IO.Put_Line("('mixed'/'talking'/'waiting') - mode in which the simulation fill run:");
+         Ada.Text_IO.Put_Line("+ mixed - will both print logs and allow user to request information. It is default parameter and can be ommited.");
+         Ada.Text_IO.Put_Line("+ talking - logs will be printed all the time.");
+         Ada.Text_IO.Put_Line("+ waiting - information will be printed only at user request.");
+         Ada.Text_IO.Put_Line("(!waiting -> ('all'/'2'/'3')) - only for mixed/talking mode! Selects which normal logs will be displayed. Does not affect debug logs");
+         Ada.Text_IO.Put_Line("+ all - all normal logs will be displayed. It is default parameter and can be ommited.");
+         Ada.Text_IO.Put_Line("+ 2 - only normal logs directly related to second task will be displayed.");
+         Ada.Text_IO.Put_Line("+ 3 - only normal logs directly related to third task will be displayed.");
+         Ada.Text_IO.Put_Line("('debug') - allows debug logs to be displayed. Does not affect normal logs. ");
+
+
       end if;
    end simulation_start;
 

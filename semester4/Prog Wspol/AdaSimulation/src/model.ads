@@ -21,7 +21,8 @@ package Model is
    --Array of workers
    type WORKER_ARR is array(Positive range <>) of access worker.WORKER;
 
-   type Simulation_Mode is (Silent_Mode,Talking_Mode);
+   type Log_Modes is (all_output,second_task,third_task);
+   type Simulation_Mode is (Mixed_Mode,Silent_Mode,Talking_Mode);
    --Simulation record
    type Simulation_Model (Steer_Length : Positive;Track_Length : Positive;Train_Length : Positive;Station_Length : Positive;Worker_Length : Positive) is
       record
@@ -29,7 +30,10 @@ package Model is
          speed : Positive :=1;
          -- starting time of simulation
          start_time : Ada.Real_Time.Time;
-         mode : Simulation_Mode :=Talking_Mode;
+         log_mode : Log_Modes :=all_output;
+         mode : Simulation_Mode :=Mixed_Mode;
+         debug : Boolean := false;
+
          steer : STEERING_ARR(1..Steer_Length);
          track : TRACK_ARR(1..Track_Length);
          platf : access TRACK_ARR;

@@ -58,16 +58,21 @@ func getModel(filename string) *Simulation_Model {
 
 	var line_state int64 = 0
 	var model_ptr *Simulation_Model = new(Simulation_Model)
+	model_ptr.log_mode = all_output
+	model_ptr.mode = Mixed_Mode
+	model_ptr.debug = false
 	steer_regex, err1 := regexp.Compile("(\\d+)\\s(\\d+)")
-	platf_regex, err3 := regexp.Compile("(\\d+)\\s(\\d+)\\s(\\d+)\\sstop\\s(\\d+)")
+	platf_regex, err3 := regexp.Compile("(\\d+)\\s(\\d+)\\s(\\d+)\\sstop\\s(\\d+)\\s(\\d+)")
 	track_regex, err4 := regexp.Compile("(\\d+)\\s(\\d+)\\s(\\d+)\\spass\\s(\\d+)\\s(\\d+)")
 	service_track_regex, err5 := regexp.Compile("(\\d+)\\s(\\d+)\\s(\\d+)\\sservice")
+	station_regex, err11 := regexp.Compile("(\\d+)")
+	worker_regex, err12 := regexp.Compile("(\\d+)\\s(\\d+)")
 
 	train_regex, err2 := regexp.Compile("(\\d+)\\s(\\d+)\\snormal\\s(\\d+)\\s([\\d+,?]+)")
 	service_train_regex, err6 := regexp.Compile("(\\d+)\\s(\\d+)\\sservice\\s(\\d+)")
 
 	train_tracklist_regex, err7 := regexp.Compile("(\\d+)")
-	if err1 != nil || err2 != nil || err3 != nil || err4 != nil || err5 != nil || err6 != nil || err7 != nil {
+	if err1 != nil || err2 != nil || err3 != nil || err4 != nil || err5 != nil || err6 != nil || err7 != nil || err11 != nil || err12 != nil {
 		fmt.Println("Could not compile one of the input regexes")
 		return nil
 	}
@@ -83,6 +88,10 @@ func getModel(filename string) *Simulation_Model {
 			line_state = 3
 		} else if curr_line == "@trains:" {
 			line_state = 4
+		} else if curr_line == "@stations:" {
+			line_state = 5
+		} else if curr_line == "@workers:" {
+			line_state = 6
 		} else {
 			switch line_state {
 			case 1:
@@ -107,6 +116,8 @@ func getModel(filename string) *Simulation_Model {
 							fmt.Println("Could not parse data for steering record from line[", i, "]\""+curr_line+"\"")
 						}
 
+					} else {
+						fmt.Println("Problem with steer result for line [", i, "]\""+curr_line+"\"")
 					}
 				} else {
 					fmt.Println("line[", i, "]\""+curr_line+"\" does not matches the steering record format.")
@@ -127,21 +138,29 @@ func getModel(filename string) *Simulation_Model {
 						} else {
 							fmt.Println("Could not parse data for track record from line[", i, "]\""+curr_line+"\"")
 						}
+					} else {
+						fmt.Println("Problem with track regex result for line [", i, "]\""+curr_line+"\"")
 					}
 				} else if platf_regex.MatchString(curr_line) {
 					res := platf_regex.FindAllStringSubmatch(curr_line, -1)
-					if len(res) > 0 && len(res[0]) >= 5 {
+					if len(res) > 0 && len(res[0]) >= 6 {
 						id, err1 := strconv.ParseInt(res[0][1], 10, 64)
 						v1, err2 := strconv.ParseInt(res[0][2], 10, 64)
 						v2, err3 := strconv.ParseInt(res[0][3], 10, 64)
 						delay, err4 := strconv.ParseInt(res[0][4], 10, 64)
-						if err1 == nil && err2 == nil && err3 == nil && err4 == nil {
+						stat, err5 := strconv.ParseInt(res[0][5], 10, 64)
+						if err1 == nil && err2 == nil && err3 == nil && err4 == nil && err5 == nil {
 							//inserting track pointer into array
-							model_ptr.track = append(model_ptr.track, NewPlatform(id, v1, v2, delay))
+							model_ptr.track = append(model_ptr.track, NewPlatform(id, v1, v2, delay, stat))
+
+							model_ptr.platf = append(model_ptr.platf, model_ptr.track[len(model_ptr.track)-1])
+
 							//fmt.Println(TrackToString(model_ptr.track[len(model_ptr.track)-1]))
 						} else {
 							fmt.Println("Could not parse data for platform record from line[", i, "]\""+curr_line+"\"")
 						}
+					} else {
+						fmt.Println("Problem with platf regex result for line [", i, "]\""+curr_line+"\"")
 					}
 				} else if service_track_regex.MatchString(curr_line) {
 					res := service_track_regex.FindAllStringSubmatch(curr_line, -1)
@@ -156,6 +175,8 @@ func getModel(filename string) *Simulation_Model {
 						} else {
 							fmt.Println("Could not parse data for service track record from line[", i, "]\""+curr_line+"\"")
 						}
+					} else {
+						fmt.Println("Problem with service track result for line [", i, "]\""+curr_line+"\"")
 					}
 				} else {
 					fmt.Println("line[", i, "]\""+curr_line+"\" does not matches the track or platform record format.")
@@ -184,6 +205,8 @@ func getModel(filename string) *Simulation_Model {
 						} else {
 							fmt.Println("Could not parse data for train record from line[", i, "]\""+curr_line+"\"")
 						}
+					} else {
+						fmt.Println("Problem with train result for line [", i, "]\""+curr_line+"\"")
 					}
 
 				} else if service_train_regex.MatchString(curr_line) {
@@ -200,14 +223,105 @@ func getModel(filename string) *Simulation_Model {
 						} else {
 							fmt.Println("Could not parse data for service train record from line[", i, "]\""+curr_line+"\"")
 						}
+					} else {
+						fmt.Println("Problem with service train result for line [", i, "]\""+curr_line+"\"")
 					}
 
 				} else {
 					fmt.Println("line[", i, "]\""+curr_line+"\" does not matches the train record format.")
 				}
+			case 5: //stations
+				if station_regex.MatchString(curr_line) {
+					res := station_regex.FindAllStringSubmatch(curr_line, -1)
+					if len(res) > 0 && len(res[0]) >= 2 {
+						id, err1 := strconv.ParseInt(res[0][1], 10, 64)
+						if err1 == nil {
+							//inserting station pointer into array
+							model_ptr.station = append(model_ptr.station, newStation(id))
+						} else {
+							fmt.Println("Could not parse data for station record from line[", i, "]\""+curr_line+"\"")
+						}
+
+					} else {
+						fmt.Println("Problem with steer result for line [", i, "]\""+curr_line+"\"")
+					}
+				} else {
+					fmt.Println("line[", i, "]\""+curr_line+"\" does not matches the station record format.")
+				}
+
+			case 6: //workers
+				if worker_regex.MatchString(curr_line) {
+					res := worker_regex.FindAllStringSubmatch(curr_line, -1)
+					if len(res) > 0 && len(res[0]) >= 3 {
+						id, err1 := strconv.ParseInt(res[0][1], 10, 64)
+						stat_id, err2 := strconv.ParseInt(res[0][2], 10, 64)
+						if err1 == nil && err2 == nil {
+							//inserting worker pointer into array
+							model_ptr.worker = append(model_ptr.worker, newWorker(id, stat_id))
+						} else {
+							fmt.Println("Could not parse data for worker record from line[", i, "]\""+curr_line+"\"")
+						}
+
+					}
+				} else {
+					fmt.Println("line[", i, "]\""+curr_line+"\" does not matches the worker record format.")
+				}
 			}
 		}
 	}
+
+	var unique bool = false
+	for it := 0; it < len(model_ptr.train); it++ {
+		train_ptr := model_ptr.train[it]
+		if train_ptr.t_type == Train_Type_Normal {
+			var uniq int64 = 0
+			for itt := 0; itt < len(*train_ptr.stationlist); itt++ {
+
+				unique = true
+				for ittt := itt + 1; ittt < len(*train_ptr.stationlist); ittt++ {
+					if (*train_ptr.stationlist)[itt] == (*train_ptr.stationlist)[ittt] {
+						unique = false
+						break
+					}
+				}
+				if unique {
+					uniq++
+				}
+			}
+			train_ptr.data[T_uniqueStations] = uniq
+		}
+	}
+	for it := 0; it < len(model_ptr.train); it++ {
+		train_ptr := model_ptr.train[it]
+		if train_ptr.t_type == Train_Type_Normal {
+			for it := 0; it < len(*train_ptr.tracklist); it++ {
+				track_id := (*train_ptr.tracklist)[it]
+				for itt := 0; itt < len(model_ptr.platf); itt++ {
+					if track_id == model_ptr.platf[itt].id {
+						ap := append(*train_ptr.stationlist, model_ptr.platf[itt].data[T_station_id])
+						train_ptr.stationlist = &ap
+						break
+					}
+				}
+			}
+		}
+	}
+
+	for it := 0; it < len(model_ptr.station); it++ {
+		stat_ptr := model_ptr.station[it]
+		if stat_ptr == nil {
+			fmt.Println("null statioin")
+		}
+		for itt := 0; itt < len(model_ptr.worker); itt++ {
+			if model_ptr.worker[itt] == nil {
+				fmt.Println("null worker")
+			}
+			if model_ptr.worker[itt].home_stat_id == stat_ptr.id {
+				stat_ptr.passengers[model_ptr.worker[itt]] = true
+			}
+		}
+	}
+
 	return model_ptr
 
 }

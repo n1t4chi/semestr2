@@ -43,7 +43,7 @@ type Steering struct {
 func NewSteering(id int64, min_delay int64) *Steering {
 	t := new(Steering)
 	t.out_of_order = false
-	t.reliability = 0.995
+	t.reliability = 0.99995
 	t.id = id
 	t.min_delay = min_delay
 	t.used_by = 0
@@ -67,9 +67,15 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 		var help_service_train_ptr *Train = nil
 		var pass_service_train_ptr *Train = nil
 		var help bool = false
+		var work bool = false
+
 		for model_ptr.work {
+			PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+				"] starts new loop", model_ptr)
 
 			if steering_ptr.out_of_order == true && help == false {
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] calls for help", model_ptr)
 				help_service_train_ptr = GetServiceTrain(model_ptr)
 				if help_service_train_ptr != nil {
 
@@ -81,59 +87,81 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 					}
 
 				} else {
-					//Ada.Text_IO.Put_Line(ustr.To_String(type_str)&"["&Positive'Image(steering_ptr.id)&"] received null pointer for service train" );
-					fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) + "] received null pointer for service train")
+					//Ada.Text_IO.Put_Line(ustr.To_String(type_str)&"["+strconv.FormatInt(steering_ptr.id, 10)+"] received null pointer for service train" );
+					fmt.Println("#2# Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
+						"] received null pointer for service train")
 				}
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] called for help", model_ptr)
 			}
+			PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+				"] enters select", model_ptr)
 
 			select {
 
 			case train_id := <-when(steering_ptr.used_by == 0, steering_ptr.allowServiceTrain):
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] enters allowServiceTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 				pass_service_train_ptr = GetTrain(train_id, model_ptr)
 				if pass_service_train_ptr != nil {
 					steering_ptr.used_by = train_id
-					PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
 						"] received accept request from service train ["+strconv.FormatInt(pass_service_train_ptr.id, 10)+
 						"]. Blocking track for other trains.", model_ptr)
 				} else {
-					fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
+					fmt.Println("#2# Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
 						"] received null pointer for service train ID[" + strconv.FormatInt(train_id, 10) + "]")
 				}
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] leaves allowServiceTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 
 			case train_id := <-steering_ptr.acceptServiceTrain:
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] enters acceptServiceTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 				if pass_service_train_ptr != nil && pass_service_train_ptr.id == train_id {
+					PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+						"] blocked by passing service train: ["+strconv.FormatInt(pass_service_train_ptr.id, 10)+
+						"]", model_ptr)
 					train_ptr = pass_service_train_ptr
 
 					hist = new(Steering_History) //_Record
 					hist.arrival = time.Now()
 					hist.train_id = train_id
-
-					PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
-						"] blocked by passing service train: ["+strconv.FormatInt(pass_service_train_ptr.id, 10)+
-						"]", model_ptr)
+					work = true
 				} else {
-					if steering_ptr.used_by == 0 || steering_ptr.used_by == train_id {
-						PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
-							"] received accept signal from invalid serivce train ID["+strconv.FormatInt(train_id, 10)+
-							"] no service train expected. Blocking the track anyway.", model_ptr)
-						pass_service_train_ptr = GetTrain(train_id, model_ptr)
-						steering_ptr.used_by = train_id
-						train_ptr = pass_service_train_ptr
+					if pass_service_train_ptr != nil {
+						if steering_ptr.used_by == 0 || steering_ptr.used_by == train_id {
+							PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+								"] received accept signal from invalid serivce train ID["+strconv.FormatInt(train_id, 10)+
+								"] no service train expected. Blocking the track anyway.", model_ptr)
+							pass_service_train_ptr = GetTrain(train_id, model_ptr)
+							steering_ptr.used_by = train_id
+							train_ptr = pass_service_train_ptr
 
-						hist = new(Steering_History) //_Record
-						hist.arrival = time.Now()
-						hist.train_id = train_id
+							hist = new(Steering_History) //_Record
+							hist.arrival = time.Now()
+							hist.train_id = train_id
+							work = true
 
+						} else {
+							PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+								"] received accept signal from invalid serivce train ID["+strconv.FormatInt(train_id, 10)+
+								"] no service train expected. Currently used by other train.", model_ptr)
+						}
 					} else {
-						PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
-							"] received accept signal from invalid serivce train ID["+strconv.FormatInt(train_id, 10)+
-							"] no service train expected. Currently used by other train.", model_ptr)
+						PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+							"] received accept signal from invalid serivce train["+strconv.FormatInt(train_id, 10)+
+							"] expected: ["+strconv.FormatInt(pass_service_train_ptr.id, 10)+"]", model_ptr)
 					}
 				}
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] leaves acceptServiceTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 
 			case train_id := <-steering_ptr.freeFromServiceTrain:
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] enters freeFromServiceTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 				if pass_service_train_ptr != nil && pass_service_train_ptr.id == train_id {
-					PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
 						"] unblocked from service train["+strconv.FormatInt(pass_service_train_ptr.id, 10)+"].",
 						model_ptr)
 					steering_ptr.used_by = 0
@@ -141,24 +169,28 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 					pass_service_train_ptr = nil
 				} else {
 					if pass_service_train_ptr == nil {
-						fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
+						fmt.Println("#2# Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
 							"] receive free signal from invalid serivce train ID[" + strconv.FormatInt(train_id, 10) +
 							"] no service train accepted.")
 					} else {
-						fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
+						fmt.Println("#2# Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
 							"] receive free signal from invalid serivce train ID[" + strconv.FormatInt(train_id, 10) +
 							"] accepted: [" + strconv.FormatInt(pass_service_train_ptr.id, 10) + "]")
 					}
 				}
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] leaves freeFromServiceTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 			case train_id := <-steering_ptr.repair:
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] enters repair("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 				if help_service_train_ptr != nil && help_service_train_ptr.id == train_id {
-					PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
 						"] was just repaired. Ready to accept incoming trains anew.",
 						model_ptr)
 					steering_ptr.out_of_order = false
 				} else {
 					if help_service_train_ptr != nil {
-						PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+						PutLine("#2# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
 							"] has no information about service train but received repair signal from service train["+strconv.FormatInt(train_id, 10)+
 							"]. Accepting the repair and moving along with schedule.",
 							model_ptr)
@@ -172,14 +204,18 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 					}
 				}
 
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] leaves repair("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 			//accepts given train thus blocking track for others
 			case train_id := <-when(steering_ptr.out_of_order == false && train_ptr == nil, steering_ptr.acceptTrain):
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] enters acceptTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 				train_ptr = GetTrain(train_id, model_ptr)
 				if train_ptr != nil {
 					hist = new(Steering_History) //_Record
 					hist.arrival = time.Now()
 					hist.train_id = train_id
-
+					work = true
 					PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
 						"] is now blocked by train["+strconv.FormatInt(train_ptr.id, 10)+"]", model_ptr)
 
@@ -188,10 +224,14 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 					fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
 						"] received null pointer for train ID[" + strconv.FormatInt(train_id, 10) + "]")
 				}
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] leaves acceptTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 
 			//otherwise waits for train to clear out the steering.
 			//clears out block for other trains after currently blocking train left the track.
 			case train_id := <-when(steering_ptr.out_of_order == false && train_ptr != nil, steering_ptr.clearAfterTrain):
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] enters clearAfterTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 				if train_ptr.id == train_id {
 					hist.departure = time.Now()
 					steering_ptr.history = append(steering_ptr.history, *hist)
@@ -206,59 +246,26 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 						"] received clear out signal from invalid train:[" + strconv.FormatInt(train_id, 10) +
 						"], currently used by:[" + strconv.FormatInt(steering_ptr.used_by, 10) + "]")
 				}
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] leaves clearAfterTrain("+strconv.FormatInt(train_id, 10)+")", model_ptr)
 			case <-time.After(time.Second * time.Duration(GetTimeSimToRealFromModel(1.0, Time_Interval_Hour, model_ptr))):
 
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] had timeout in select", model_ptr)
 			}
+			PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+				"] leaves select", model_ptr)
 
-			/*
-				//If train is accepted { if below select is performed and on next cycle thread waits for clearAfterTrain.
-				if train_ptr == nil { // if pointer is null { it waits until the train is accepted.
-					//accepts given train thus blocking steering for others
-					train_id := <-steering_ptr.chan_accept
-
-					train_ptr = GetTrain(train_id, model_ptr)
-					if train_ptr != nil {
-						hist = new(Steering_History) //_Record
-						hist.arrival = time.Now()
-						hist.train_id = train_id
-
-						PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
-							"] blocked by passing train: ["+strconv.FormatInt(train_ptr.id, 10)+"]", model_ptr)
-
-						steering_ptr.used_by = train_ptr.id
-					} else {
-						fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) + "] received null pointer for train ID[" + strconv.FormatInt(train_id, 10) + "]")
-					}
-				} else { //otherwise waits for train to clear out the steering.
-					//clears out block for other trains after currently blocking train left the steering.
-					train_id := <-steering_ptr.chan_clear
-					if train_ptr.id == train_id {
-						hist.departure = time.Now()
-						steering_ptr.history = append(steering_ptr.history, *hist)
-
-						PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
-							"] unblocked after train["+strconv.FormatInt(train_ptr.id, 10)+"] passed by", model_ptr)
-
-						train_ptr = nil
-						steering_ptr.used_by = 0
-						hist = nil
-					} else {
-						fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
-							"] received clear out signal from invalid train:[" + strconv.FormatInt(train_id, 10) +
-							"], currently used by:[" + strconv.FormatInt(steering_ptr.used_by, 10) + "]")
-					}
-				}
-			*/
 			//fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
 			//	"] is after first if and has train " + strconv.FormatInt(train_ptr.id, 10))
 
 			//for given train waits specified duration and { signals the train that it's ready to depart from this steering.
-			if steering_ptr.out_of_order == false && train_ptr != nil {
+			if steering_ptr.out_of_order == false && train_ptr != nil && work {
+				work = false
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] starts processing train routine ", model_ptr)
 				delay_dur := float64(steering_ptr.min_delay)
 				real_delay_dur := GetTimeSimToRealFromModel(delay_dur, Time_Interval_Minute, model_ptr)
-
-				//fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
-				//	"] is in second if")
 
 				PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
 					"] with train["+strconv.FormatInt(train_ptr.id, 10)+
@@ -267,24 +274,24 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 
 				//steering delay
 
-				//fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
-				//	"] goes to sleep for:")
-				//fmt.Println(time.Duration(real_delay_dur) * time.Second)
-
 				time.Sleep(time.Duration(real_delay_dur) * time.Second)
 
 				PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
 					"] signals the train["+strconv.FormatInt(train_ptr.id, 10)+
 					"] that it's ready to depart onto next track", model_ptr)
 
-				//notify train
-				//train_ptr.t_task.trainReadyToDepartFromSteering(steering_ptr.id);
-
-				//fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
-				//	"] is ready to notify train")
-
-				//train_ptr.chan_ready <- TrainMessageFromSteering(steering_ptr.id)
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] starts train["+strconv.FormatInt(train_ptr.id, 10)+
+					"].trainReadyToDepartFromSteering("+strconv.FormatInt(steering_ptr.id, 10)+")", model_ptr)
 				train_ptr.trainReadyToDepartFromSteering <- steering_ptr.id
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] finished train["+strconv.FormatInt(train_ptr.id, 10)+
+					"].trainReadyToDepartFromSteering("+strconv.FormatInt(steering_ptr.id, 10)+")", model_ptr)
+				PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] signaled the train["+strconv.FormatInt(train_ptr.id, 10)+
+					"] that it's ready to depart onto next track", model_ptr)
+				PutLine("#debug# Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+					"] finishes processing train routine ", model_ptr)
 
 			}
 			//fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) +
@@ -295,7 +302,8 @@ func SteeringTask(steering_ptr *Steering, model_ptr *Simulation_Model) {
 				//fmt.Println("Steering[" + strconv.FormatInt(steering_ptr.id, 10) + "] rolled " + strconv.FormatFloat(ran, 'f', 3, 64) + " at time " + TimeToString(GetRelativeTime(time.Now(), model_ptr)))
 
 				if steering_ptr.reliability < ran {
-					PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+"] broke at time "+TimeToString(GetRelativeTime(time.Now(), model_ptr)), model_ptr)
+					PutLine("Steering["+strconv.FormatInt(steering_ptr.id, 10)+
+						"] broke at time "+TimeToString(GetRelativeTime(time.Now(), model_ptr)), model_ptr)
 					steering_ptr.out_of_order = true
 					help = false
 				}

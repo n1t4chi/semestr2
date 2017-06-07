@@ -37,9 +37,10 @@ const (
 
 //Keys for additional fields.
 const (
-	T_distance  string = "dist"
-	T_max_speed string = "speed"
-	T_min_delay string = "delay"
+	T_distance   string = "dist"
+	T_max_speed  string = "speed"
+	T_min_delay  string = "delay"
+	T_station_id string = "stat"
 )
 
 //Track record with all necessary data. Additional fields based on type are stored in data field
@@ -73,7 +74,7 @@ func initTrack(id int64, st_start int64, st_end int64) *Track {
 	t := new(Track)
 	t.id = id
 	t.out_of_order = false
-	t.reliability = 0.995
+	t.reliability = 0.99995
 	t.st_start = st_start
 	t.st_end = st_end
 	t.used_by = 0
@@ -98,10 +99,11 @@ func NewTrack(id int64, st_start int64, st_end int64, distance int64, speed int6
 }
 
 //Creates new Track of Track_Type_Platform.
-func NewPlatform(id int64, st_start int64, st_end int64, min_delay int64) *Track {
+func NewPlatform(id int64, st_start int64, st_end int64, min_delay int64, station_id int64) *Track {
 	t := initTrack(id, st_start, st_end)
 	t.t_type = Track_Type_Platform
 	t.data[T_min_delay] = min_delay
+	t.data[T_station_id] = station_id
 	return t
 }
 
@@ -119,6 +121,7 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 	var hist *Track_History = nil
 
 	var r *rand.Rand = rand.New(rand.NewSource(int64(time.Now().Nanosecond() + int(2*track_ptr.id) + 16384)))
+	var work bool = false
 
 	if track_ptr != nil && model_ptr != nil {
 		//track naming
@@ -150,7 +153,7 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 
 				} else {
 					//Ada.Text_IO.Put_Line(ustr.To_String(type_str)&"["&Positive'Image(track_ptr.id)&"] received null pointer for service train" );
-					fmt.Println(type_str + "[" + strconv.FormatInt(track_ptr.id, 10) + "] received null pointer for service train")
+					fmt.Println("#2# " + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) + "] received null pointer for service train")
 				}
 			}
 
@@ -160,40 +163,42 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 				pass_service_train_ptr = GetTrain(train_id, model_ptr)
 				if pass_service_train_ptr != nil {
 					track_ptr.used_by = train_id
-					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+					PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 						"] received accept request from service train ["+strconv.FormatInt(pass_service_train_ptr.id, 10)+
 						"]. Blocking track for other trains.", model_ptr)
 				} else {
-					fmt.Println(type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
+					fmt.Println("#2# " + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
 						"] received null pointer for service train ID[" + strconv.FormatInt(train_id, 10) + "]")
 				}
 
 			case train_id := <-track_ptr.acceptServiceTrain:
 				if pass_service_train_ptr != nil && pass_service_train_ptr.id == train_id {
 					train_ptr = pass_service_train_ptr
+					work = true
 
 					hist = new(Track_History) //_Record
 					hist.arrival = time.Now()
 					hist.train_id = train_id
 
-					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+					PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 						"] blocked by passing service train: ["+strconv.FormatInt(pass_service_train_ptr.id, 10)+
 						"]", model_ptr)
 				} else {
 					if track_ptr.used_by == 0 || track_ptr.used_by == train_id {
-						PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+						PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 							"] received accept signal from invalid serivce train ID["+strconv.FormatInt(train_id, 10)+
 							"] no service train expected. Blocking the track anyway.", model_ptr)
 						pass_service_train_ptr = GetTrain(train_id, model_ptr)
 						track_ptr.used_by = train_id
 						train_ptr = pass_service_train_ptr
+						work = true
 
 						hist = new(Track_History) //_Record
 						hist.arrival = time.Now()
 						hist.train_id = train_id
 
 					} else {
-						PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+						PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 							"] received accept signal from invalid serivce train ID["+strconv.FormatInt(train_id, 10)+
 							"] no service train expected. Currently used by other train.", model_ptr)
 					}
@@ -201,7 +206,7 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 
 			case train_id := <-track_ptr.freeFromServiceTrain:
 				if pass_service_train_ptr != nil && pass_service_train_ptr.id == train_id {
-					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+					PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 						"] unblocked from service train["+strconv.FormatInt(pass_service_train_ptr.id, 10)+"].",
 						model_ptr)
 					track_ptr.used_by = 0
@@ -209,30 +214,30 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 					pass_service_train_ptr = nil
 				} else {
 					if pass_service_train_ptr == nil {
-						fmt.Println(type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
+						fmt.Println("#2# " + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
 							"] receive free signal from invalid serivce train ID[" + strconv.FormatInt(train_id, 10) +
 							"] no service train accepted.")
 					} else {
-						fmt.Println(type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
+						fmt.Println("#2# " + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
 							"] receive free signal from invalid serivce train ID[" + strconv.FormatInt(train_id, 10) +
 							"] accepted: [" + strconv.FormatInt(pass_service_train_ptr.id, 10) + "]")
 					}
 				}
 			case train_id := <-track_ptr.repair:
 				if help_service_train_ptr != nil && help_service_train_ptr.id == train_id {
-					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+					PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 						"] was just repaired. Ready to accept incoming trains anew.",
 						model_ptr)
 					track_ptr.out_of_order = false
 				} else {
 					if help_service_train_ptr != nil {
-						PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+						PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 							"] has no information about service train but received repair signal from service train["+strconv.FormatInt(train_id, 10)+
 							"]. Accepting the repair and moving along with schedule.",
 							model_ptr)
 						track_ptr.out_of_order = false
 					} else {
-						PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+						PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 							"] received repair signal from illegal service train ["+strconv.FormatInt(train_id, 10)+
 							"]. Accepting the repair and moving along with schedule.",
 							model_ptr)
@@ -247,7 +252,7 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 					hist = new(Track_History) //_Record
 					hist.arrival = time.Now()
 					hist.train_id = train_id
-
+					work = true
 					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
 						"] is now blocked by train["+strconv.FormatInt(train_ptr.id, 10)+"]", model_ptr)
 
@@ -278,61 +283,10 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 
 			}
 
-			/*	//If train is accepted then below if statement is performed and on next cycle thread waits for clearAfterTrain.
-				if train_ptr == nil { // if pointer is null then it waits until the train is accepted.
-					var train_id int64
-					//if track_ptr.id == 2 {
-					//fmt.Println("$%$%$%$%" + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) + "] waits on chan_accept")
-					//}
-					//go func() { track_ptr.chan_accept <- 1 }()
-					train_id = <-track_ptr.chan_accept
-
-					//if track_ptr.id == 2 {
-					//fmt.Println("$%$%$%$%" + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) + "] accepted on chan_accept: " + strconv.FormatInt(train_id, 10))
-					//}
-
-					train_ptr = GetTrain(train_id, model_ptr)
-					if train_ptr != nil {
-						hist = new(Track_History) //_Record
-						hist.arrival = time.Now()
-						hist.train_id = train_id
-
-						PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
-							"] is now blocked by train["+strconv.FormatInt(train_ptr.id, 10)+"]", model_ptr)
-
-						track_ptr.used_by = train_ptr.id
-					} else {
-						fmt.Println(type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
-							"] received null pointer for train ID[" + strconv.FormatInt(train_id, 10) + "]")
-					}
-				} else { //otherwise waits for train to clear out the steering.
-					//if track_ptr.id == 2 {
-					//	fmt.Println("$%$%$%$%" + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) + "] waits on chan_clear")
-					//}
-					train_id := <-track_ptr.chan_clear
-					//if track_ptr.id == 2 {
-					//	fmt.Println("$%$%$%$%" + type_str + "[" + strconv.FormatInt(track_ptr.id, 10) + "] accepted on chan_clear: " + strconv.FormatInt(train_id, 10))
-					//}
-
-					if train_ptr.id == train_id {
-						hist.departure = time.Now()
-						track_ptr.history = append(track_ptr.history, *hist)
-
-						PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
-							"] is now unblocked from train["+strconv.FormatInt(train_ptr.id, 10)+"]", model_ptr)
-
-						train_ptr = nil
-						track_ptr.used_by = 0
-					} else {
-						fmt.Println(type_str + "[" + strconv.FormatInt(track_ptr.id, 10) +
-							"] received clear out signal from invalid train:[" + strconv.FormatInt(train_id, 10) +
-							"], currently used by:[" + strconv.FormatInt(track_ptr.used_by, 10) + "]")
-					}
-				} */
-
 			//for given train waits specified duration and then signals the train that it's ready to depart from this track.
 
-			if track_ptr.out_of_order == false && train_ptr != nil {
+			if track_ptr.out_of_order == false && train_ptr != nil && work {
+				work = false
 				var delay_dur, real_delay_dur float64
 				//track delay based on track type
 				if track_ptr.t_type == Track_Type_Track {
@@ -366,6 +320,10 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 						"] that it's ready to depart onto next steering", model_ptr)
 					//notify train
 					train_ptr.trainArrivedToTheEndOfTrack <- track_ptr.id /* chan_ready <- TrainMessageFromTrack(track_ptr.id)*/
+					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+						"] signaled the train:["+strconv.FormatInt(train_ptr.id, 10)+
+						"] that it's ready to depart onto next steering", model_ptr)
+					//notify train
 				} else if track_ptr.t_type == Track_Type_Platform && pass_service_train_ptr == nil {
 					train_ptr.current_speed = 0
 					delay_dur := float64(track_ptr.data[T_min_delay])
@@ -387,6 +345,9 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 					//notify train
 					//train_ptr.chan_ready <- TrainMessageFromPlatform(track_ptr.id)
 					train_ptr.trainReadyToDepartFromPlatform <- track_ptr.id /* chan_ready <- TrainMessageFromTrack(track_ptr.id)*/
+					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+						"] signaled the train train["+strconv.FormatInt(train_ptr.id, 10)+
+						"] that it's ready to depart onto next steering", model_ptr)
 				} else { //for service tracks and platforms on which service trains moves on
 					train_ptr.current_speed = 0
 					delay_dur := 1.0
@@ -405,6 +366,9 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 					//notify train
 					//train_ptr.t_task.trainArrivedToTheEndOfTrack(track_ptr.id)
 					train_ptr.trainArrivedToTheEndOfTrack <- track_ptr.id /* chan_ready <- TrainMessageFromTrack(track_ptr.id)*/
+					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+
+						"] signaled the train["+strconv.FormatInt(train_ptr.id, 10)+
+						"] that it's ready to depart onto next steering", model_ptr)
 				}
 			}
 
@@ -413,7 +377,7 @@ func TrackTask(track_ptr *Track, model_ptr *Simulation_Model) {
 				//fmt.Println(type_str + "[" + strconv.FormatInt(track_ptr.id, 10) + "] rolled " + strconv.FormatFloat(ran, 'f', 3, 64) + " at time " + TimeToString(GetRelativeTime(time.Now(), model_ptr)))
 
 				if track_ptr.reliability < ran {
-					PutLine(type_str+"["+strconv.FormatInt(track_ptr.id, 10)+"] broke at time "+TimeToString(GetRelativeTime(time.Now(), model_ptr)), model_ptr)
+					PutLine("#2# "+type_str+"["+strconv.FormatInt(track_ptr.id, 10)+"] broke at time "+TimeToString(GetRelativeTime(time.Now(), model_ptr)), model_ptr)
 					track_ptr.out_of_order = true
 					help = false
 				}

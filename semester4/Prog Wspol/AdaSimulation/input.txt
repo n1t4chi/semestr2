@@ -1,6 +1,6 @@
 @simulation_speed:
 #<real-time seconds to simulation-hour ratio>
-15
+5
 @steering:
 #<nr>	<delay in minutes>
 #between stations

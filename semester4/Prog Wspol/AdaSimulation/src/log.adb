@@ -14,12 +14,13 @@ package body Log is
    --prints new line
    procedure putLine(line : String) is
    begin
-      if Ada.Strings.Fixed.Head(line,3) = "#3#" then
+      --if Ada.Strings.Fixed.Head(line,7) /= "#debug#" then
+      --if Ada.Strings.Fixed.Head(line,3) /= "#3#" then
          --Ada.Text_IO.Put_Line(line);
          Ada.Text_IO.Put_Line(Ada.Calendar.Formatting.Image(Ada.Calendar.Clock)&":"&line);
-      else
-         null;
-      end if;
+     -- else
+     --    null;
+     -- end if;
    end putLine;
 
 
@@ -27,17 +28,17 @@ package body Log is
    procedure putLine(line : String ; model_ptr : access Simulation_Model) is
    begin
       --Ada.Text_IO.Put_Line("test");
-      if model_ptr /= null and then model_ptr.mode = Talking_Mode then
+   if model_ptr /= null and then model_ptr.mode /= Silent_Mode then
+         if not model_ptr.debug and then Ada.Strings.Fixed.Head(line,7) = "#debug#" then
+            return;
+         end if;
+         if model_ptr.log_mode = second_task and then Ada.Strings.Fixed.Head(line,3) /= "#2#" then
+            return;
+         end if;
+         if model_ptr.log_mode = third_task and then Ada.Strings.Fixed.Head(line,3) /= "#3#" then
+            return;
+         end if;
          putLine(line);
- --     elsif model_ptr = null then
- --        Ada.Text_IO.Put_Line("null ptr");
- --     elsif model_ptr.mode /= Talking_Mode then
-  --       if model_ptr.mode = Silent_Mode then
-   --         Ada.Text_IO.Put_Line("silent mode");
-    --     else
-     --       Ada.Text_IO.Put_Line("it's bucked");
-      --   end if;
-
       end if;
 
    end putLine;
@@ -47,7 +48,7 @@ package body Log is
    --prints model based on mode
    procedure printModel(model_ptr : access Simulation_Model; talking_mode : Model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printModel(model_ptr);
       end if;
 
@@ -70,7 +71,7 @@ package body Log is
    --prints steerings based on mode
    procedure printSteerings(model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printSteerings(model_ptr);
       end if;
 
@@ -89,7 +90,7 @@ package body Log is
    --prints tracks based on mode
    procedure printTracks(model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printTracks(model_ptr);
       end if;
 
@@ -106,7 +107,7 @@ package body Log is
    --prints trains based on mode
    procedure printTrains(model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printTrains(model_ptr);
       end if;
 
@@ -127,7 +128,7 @@ package body Log is
    --prints train locations based on mode
    procedure printTrainLocations(model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printTrainLocations(model_ptr);
       end if;
 
@@ -153,7 +154,7 @@ package body Log is
  --prints stations based on mode
    procedure printWorkers(model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printWorkers(model_ptr);
       end if;
 
@@ -173,7 +174,7 @@ package body Log is
    --prints stations based on mode
    procedure printStations(model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printStations(model_ptr);
       end if;
 
@@ -199,7 +200,7 @@ package body Log is
    --prints given train status status
    procedure printTrainStatus(train_id : Positive;model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printTrainStatus(train_id,model_ptr);
       end if;
    end printTrainStatus;
@@ -208,7 +209,7 @@ package body Log is
    --prints given train status status based on mode
    procedure printTrainStatus(train_ptr : access train.TRAIN; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printTrainStatus(train_ptr);
       end if;
 
@@ -225,7 +226,7 @@ package body Log is
    --prints given steering status based on mode
    procedure printSteeringStatus(steer_id : Positive;model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printSteeringStatus(steer_id,model_ptr);
       end if;
 
@@ -241,7 +242,7 @@ package body Log is
    --prints given steering status based on mode
    procedure printSteeringStatus(steer_ptr : access steering.STEERING; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printSteeringStatus(steer_ptr);
       end if;
 
@@ -258,7 +259,7 @@ package body Log is
    --prints given track status based on mode
    procedure printTrackStatus(track_id : Positive;model_ptr : access Simulation_Model; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printTrackStatus(track_id,model_ptr);
       end if;
 
@@ -274,7 +275,7 @@ package body Log is
    --prints given track status based on mode
    procedure printTrackStatus(track_ptr : access track.TRACK; talking_mode : model.Simulation_Mode) is
    begin
-      if talking_mode = model.Talking_Mode then
+      if talking_mode /= model.Silent_Mode then
          printTrackStatus(track_ptr);
       end if;
 

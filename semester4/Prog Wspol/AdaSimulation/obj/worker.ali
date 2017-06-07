@@ -28,7 +28,7 @@ RV SPARK_05
 RV MAX_SELECT_ALTERNATIVES=5
 RV MAX_TASK_ENTRIES=4
 
-U worker%b		worker.adb		f57a3421 OO PK IL
+U worker%b		worker.adb		e88f27ab OO PK IL
 W ada%s			ada.ads			ada.ali
 W ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
@@ -45,9 +45,7 @@ W model%s		model.adb		model.ali
 W station%s		station.adb		station.ali
 W system%s		system.ads		system.ali
 W system.concat_3%s	s-conca3.adb		s-conca3.ali
-W system.concat_4%s	s-conca4.adb		s-conca4.ali
 W system.concat_5%s	s-conca5.adb		s-conca5.ali
-W system.concat_6%s	s-conca6.adb		s-conca6.ali
 W system.concat_7%s	s-conca7.adb		s-conca7.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
@@ -57,7 +55,7 @@ W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
 W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
 W train%s		train.adb		train.ali
 
-U worker%s		worker.ads		93f5722b EE OO PF PK IL
+U worker%s		worker.ads		6dd91d35 EE OO PF PK IL
 W ada%s			ada.ads			ada.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
 Z ada.containers.hash_tables%s  a-cohata.ads	a-cohata.ali
@@ -127,18 +125,16 @@ D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
-D log.ads		20170527181952 5383a8f4 log%s
-D model.ads		20170527191540 eb809159 model%s
+D log.ads		20170601215330 5383a8f4 log%s
+D model.ads		20170602135624 15acfe47 model%s
 D station.ads		20170530110852 b43b2778 station%s
-D steering.ads		20170425093334 511a4152 steering%s
+D steering.ads		20170601204004 ba150710 steering%s
 D system.ads		20160516092930 2da59038 system%s
 D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
 D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
 D s-atocou.adb		20160516092932 a9c6d721 system.atomic_counters%b
 D s-conca3.ads		20160516092932 0b705ca5 system.concat_3%s
-D s-conca4.ads		20160516092930 7e642b20 system.concat_4%s
 D s-conca5.ads		20160516092928 875e432e system.concat_5%s
-D s-conca6.ads		20160516092926 d2c72db2 system.concat_6%s
 D s-conca7.ads		20160516092926 fcc75b1f system.concat_7%s
 D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
 D s-exctab.ads		20160516092930 54135002 system.exception_table%s
@@ -176,185 +172,187 @@ D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
 D s-win32.ads		20160516092926 b7f96285 system.win32%s
-D track.ads		20170521144948 7c12c738 track%s
-D train.ads		20170529182320 06baf68b train%s
+D track.ads		20170601204002 54b599f2 track%s
+D train.ads		20170601220140 3ca2acfa train%s
 D worker.ads		20170529201636 c9351b8a worker%s
-D worker.adb		20170530172024 9f5b1971 worker%b
+D worker.adb		20170603163412 469a3f94 worker%b
 X 1 ada.ads
-16K9*Ada 19e8 90|2r6 2r26 3r6 36r41 39r26 40r27 91|1r6 3r6 4r6 6r6 6r27 7r6
-. 7r37 8r6 8r25 12r6 43r22 52r22 61r19 94r19 96r19 121r25 124r22 136r16 148r19
-. 163r19 171r16 179r16 199r16 228r25 234r16 240r10 241r10 242r10 250r41 252r14
+16K9*Ada 19e8 88|2r6 2r26 3r6 36r41 39r26 40r27 89|1r6 3r6 4r6 6r6 6r27 7r6
+. 7r37 8r6 8r25 12r6 41r25 50r25 59r22 92r22 94r22 116r31 119r28 122r25 134r19
+. 146r22 161r22 169r19 177r19 197r19 223r31 226r28 232r19 237r10 241r10 242r10
+. 243r10 251r41 253r14
 X 6 a-contai.ads
-16K13*Containers 24e19 90|2w10 2r30 3r10 36r45 39r30 40r31 91|1w10 12r10
-. 250r45 252r18
-19M9*Hash_Type 90|34r41 36r56 91|246r41 248r14 250r56 252r29
+16K13*Containers 24e19 88|2w10 2r30 3r10 36r45 39r30 40r31 89|1w10 12r10
+. 251r45 253r18
+19M9*Hash_Type 88|34r41 36r56 89|247r41 249r14 251r56 253r29
 X 12 a-cohase.ads
-42+9 Element_Type 90|39r53 40r54
-44V18 Hash{6|19M9} 90|39r79 40r79
-46V18 Equivalent_Elements{boolean} 90|39r94 40r94
-49V19 "="{boolean} 90|39r124 40r124
-51k24*Hashed_Sets 607e31 90|3w21 39r41 40r42 91|12w21
+42+9 Element_Type 88|39r53 40r54
+44V18 Hash{6|19M9} 88|39r79 40r79
+46V18 Equivalent_Elements{boolean} 88|39r94 40r94
+49V19 "="{boolean} 88|39r124 40r124
+51k24*Hashed_Sets 607e31 88|3w21 39r41 40r42 89|12w21
 56R9*Set<19|43R9>
 64R9*Cursor
-127V13*Element{integer} 91|210s29[90|39]
-127r22 Position{64R9[90|39]} 91|210r37[90|39]
-351V13*Iterate<22|24R9[78[90|39]]> 91|209s34[90|39]
+127V13*Element{integer} 89|208s32[88|39]
+127r22 Position{64R9[88|39]} 89|208r40[88|39]
+351V13*Iterate<22|24R9[78[88|39]]> 89|207s37[88|39]
 X 14 a-conhel.ads
 84R12 Reference_Control_Type<19|43R9>
 X 18 a-except.ads
-54K13*Exceptions 349e19 91|6w10 6r31
-94V13*Exception_Message{string} 91|242s31
-104V13*Exception_Information{string} 91|241s31
+54K13*Exceptions 349e19 89|6w10 6r31
+94V13*Exception_Message{string} 89|243s31
+104V13*Exception_Information{string} 89|242s31
 X 20 a-flteio.ads
-20K13*Float_Text_IO[32|46] 91|4w10 163r23
+20K13*Float_Text_IO[32|46] 89|4w10 161r26
 X 22 a-iteint.ads
 24h9 Forward_Iterator
 32h9 Reversible_Iterator<24R9[17|72]>
 X 23 a-numeri.ads
-16K13*Numerics 32e17 91|7r10 7r41
+16K13*Numerics 32e17 89|7r10 7r41
 X 24 a-nuflra.ads
-41K22*Float_Random 74e30 91|7w19 7r50
+41K22*Float_Random 74e30 89|7w19 7r50
 X 25 a-reatim.ads
-39K13*Real_Time 187e18 91|8w10 8r29
+39K13*Real_Time 187e18 89|8w10 8r29
 X 31 a-textio.ads
-49K13*Text_IO 471e16 91|3w10 43r26 52r26 61r23 94r23 96r23 121r29 124r26
-. 136r20 148r23 171r20 179r20 199r20 228r29 234r20 240r14 241r14 242r14
+49K13*Text_IO 471e16 89|3w10 41r29 50r29 59r26 92r26 94r26 116r35 119r32
+. 122r29 134r23 146r26 169r23 177r23 197r23 223r35 226r32 232r23 237r14 241r14
+. 242r14 243r14
 73I12*Field{integer}
-263U14*Put_Line 91|43s34 52s34 61s31 94s31 96s31 121s37 124s34 136s28 148s31
-. 171s28 179s28 199s28 228s37 234s28 240s22 241s22 242s22
+263U14*Put_Line 89|41s37 50s37 59s34 92s34 94s34 116s43 119s40 122s37 134s31
+. 146s34 169s31 177s31 197s31 223s43 226s40 232s31 237s22 241s22 242s22 243s22
 X 32 a-tiflio.ads
-79U14*Put 91|163s37[20|20]
-80a7 To{string} 91|163r41[20|20]
-81f7 Item{float} 91|163r53[20|20]
-82i7 Aft{31|73I12} 91|163r76[20|20]
-83i7 Exp{31|73I12} 91|163r85[20|20]
+79U14*Put 89|161s40[20|20]
+80a7 To{string} 89|161r44[20|20]
+81f7 Item{float} 89|161r56[20|20]
+82i7 Aft{31|73I12} 89|161r79[20|20]
+83i7 Exp{31|73I12} 89|161r88[20|20]
 X 39 log.ads
-9K9*Log 94e8 91|5w6 78r19 85r22 88r22 109r25 113r28 118r28 145r19 151r16
-. 164r19 167r16 184r16 187r16 195r16 205r13 216r25 220r28 225r28
-24U14*putLine 91|78s23 85s26 88s26 109s29 113s32 118s32 145s23 151s20 164s23
-. 167s20 184s20 187s20 195s20 205s17 216s29 220s32 225s32
+9K9*Log 94e8 89|5w6 76r22 83r25 86r25 107r28 111r31 143r22 149r19 162r22
+. 165r19 182r19 185r19 193r19 203r16 214r28 218r31
+24U14*putLine 89|76s26 83s29 86s29 107s32 111s35 143s26 149s23 162s26 165s23
+. 182s23 185s23 193s23 203s20 214s32 218s35
 X 40 model.ads
-10K9*Model 97e10 90|11r74 26r34 91|2w6 65r37 65r98 72r26 73r25 103r25 106r32
-. 133r40 143r28 157r25 166r40 166r109 174r40 193r25 207r25 212r35
-40b10*work{boolean} 91|26r23
-47V13*getStation(41|21R9) 91|73s31 103s31 143s34 157s31 193s31 207s31
-47i24 stat_id{positive} 91|73r42 103r42 143r45 157r42 193r42 207r42
-47p45 model_ptr(26R9) 91|73r69 103r75 143r80 157r77 193r77 207r75
-53V13*getTrain(89|61R9) 91|72s32 106s38 212s41
-53i22 train_id{positive} 91|72r41 106r47 212r50
-53p44 model_ptr(26R9) 91|72r73 106r73 212r131
-78n27*Time_Interval_Minute{78E9} 91|65r104
-78n50*Time_Interval_Hour{78E9} 91|166r115
-82V13*getTimeSimToReal{float} 91|65s43 166s46
-82f30 time_in_interval{float} 91|65r60 166r63
-82e57 interval{78E9} 91|65r86 166r97
-82p84 model_ptr(26R9) 91|65r127 166r134
-87i10*train_id{positive} 91|105r77 108r83 210r114 212r120 228r201
-89i10*arrive_station_id{positive} 91|71r99 75r77
-91A9*Connection_Arr(85R9)<integer>
-92V13*getConnection(91A9) 91|133s46 174s46
-92i27 source_station{positive} 91|133r60 174r60
-92i55 destination_station{positive} 91|133r102 174r102
-92p88 model_ptr(26R9) 91|133r149 174r149
+10K9*Model 101e10 88|11r74 26r34 89|2w6 63r40 63r101 70r29 71r28 101r28 104r35
+. 131r43 141r31 155r28 164r43 164r112 172r43 191r28 205r28 210r38
+44b10*work{boolean} 89|27r26
+51V13*getStation(41|21R9) 89|71s34 101s34 141s37 155s34 191s34 205s34
+51i24 stat_id{positive} 89|71r45 101r45 141r48 155r45 191r45 205r45
+51p45 model_ptr(27R9) 89|71r72 101r78 141r83 155r80 191r80 205r78
+57V13*getTrain(87|61R9) 89|70s35 104s41 210s44
+57i22 train_id{positive} 89|70r44 104r50 210r53
+57p44 model_ptr(27R9) 89|70r76 104r76 210r134
+82n27*Time_Interval_Minute{82E9} 89|63r107
+82n50*Time_Interval_Hour{82E9} 89|164r118
+86V13*getTimeSimToReal{float} 89|63s46 164s49
+86f30 time_in_interval{float} 89|63r63 164r66
+86e57 interval{82E9} 89|63r89 164r100
+86p84 model_ptr(27R9) 89|63r130 164r137
+91i10*train_id{positive} 89|103r80 106r86 208r117 210r123 226r203
+93i10*arrive_station_id{positive} 89|69r102 73r80
+95A9*Connection_Arr(89R9)<integer>
+96V13*getConnection(95A9) 89|131s49 172s49
+96i27 source_station{positive} 89|131r63 172r63
+96i55 destination_station{positive} 89|131r105 172r105
+96p88 model_ptr(27R9) 89|131r152 172r152
 X 41 station.ads
-5K9*station 38e12 91|10w6 21r25
-6R9*STATION 32e17 91|21r33
-9Y13 notifyAboutWorkerArrival 91|80s38
-10Y13 notifyAboutWorkerDeparture 91|112s44 219s44
-15Y13 notifyAboutReadinessToWork 91|146s35 196s32
-16Y13 notifyAboutFinishingTheWork 91|168s32
+5K9*station 38e12 89|10w6 21r25
+6R9*STATION 32e17 89|21r33
+9Y13 notifyAboutWorkerArrival 89|78s41
+10Y13 notifyAboutWorkerDeparture 89|110s47 217s47
+15Y13 notifyAboutReadinessToWork 89|144s38 194s35
+16Y13 notifyAboutFinishingTheWork 89|166s35
 21R9*STATION
-23i10*id{positive} 91|83r54 85r177 113r179 220r179
-26p10*s_task(7T14) 91|80r31 112r37 146r28 168r25 196r25 219r37
-28r10*trains{12|56R9[90|39]} 91|209r51
+23i10*id{positive} 89|81r57 83r181 111r183 218r183
+26p10*s_task(7T14) 89|78r34 110r40 144r31 166r28 194r28 217r40
+28r10*trains{12|56R9[88|39]} 89|207r54
 X 43 system.ads
 67M9*Address
-X 59 s-memory.ads
+X 57 s-memory.ads
 53V13*Alloc{43|67M9} 103i<c,__gnat_malloc>22
 68U14*Free 104i<c,__gnat_free>22
 76V13*Realloc{43|67M9} 105i<c,__gnat_realloc>22
-X 68 s-stausa.ads
+X 66 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
-X 70 s-stalib.adb
+X 68 s-stalib.adb
 93U14 Break_Start 94i<c,__gnat_break_start>22
-X 89 train.ads
-8K9*train 98e10 91|9w6 20r26
-11R9*TRAIN 92e16 91|20r32
-33Y13 leaveTrain 91|81s39
-34Y13 enterTrain 91|111s45 218s45
+X 87 train.ads
+8K9*train 98e10 89|9w6 20r26
+11R9*TRAIN 92e16 89|20r32
+33Y13 leaveTrain 89|79s42
+34Y13 enterTrain 89|109s48 216s48
 61R9*TRAIN
-63i10*id{positive} 91|85r123 88r130 109r132 113r128 114r59 118r137 216r132
-. 220r128 221r59 225r137
-73p10*t_task(15T14) 91|81r32 111r38 218r38
-X 90 worker.ads
-6K9*worker 42l5 42e11 91|15b14 264l5 264t11
+63i10*id{positive} 89|83r126 86r133 107r135 111r131 112r62 116r149 214r135
+. 218r131 219r62 223r149
+73p10*t_task(15T14) 89|79r35 109r41 216r41
+X 88 worker.ads
+6K9*worker 42l5 42e11 89|15b14 265l5 265t11
 9E9*WorkerState 9e89 29r18
-9n25*AtHome{9E9} 29r33 91|31r35 137r34 183r34 204r31
-9n32*TravellingToWork{9E9} 91|33r37 56r66 132r30 189r33
-9n49*WaitingForWork{9E9} 91|37r35 142r34 192r31
-9n64*TravellingToHome{9E9} 91|56r103 177r31 201r33
+9n25*AtHome{9E9} 29r33 89|29r38 135r37 181r37 202r34
+9n32*TravellingToWork{9E9} 89|31r40 54r69 130r33 187r36
+9n49*WaitingForWork{9E9} 89|35r38 140r37 190r34
+9n64*TravellingToHome{9E9} 89|54r106 175r34 199r36
 9n81*Working{9E9}
 10R9*WORKER 11r46 19c9 30e17 32r31
-11T14*WorkerTask 11d28 11d55 17l8 17e18 28r27 91|17b14 243l8 243t18
-12Y13 acceptTask 12>25 91|32b23 35l20 35t30
-12i25 stat_id{positive} 91|34r44
-13Y13 startTask 13>24 13>48 91|38b23 45l20 45t29
-13i24 stat_id{positive} 91|39r22 43r162
-13f48 work_time_hours{float} 91|40r39
-14Y13 trainStop 14>25 14>50 91|48b23 54l20 54t29
-14i25 train_id{positive} 91|49r22 52r160
-14i50 stat_id{positive} 91|50r39
-15Y13 notifyAboutTrainArrival 15>37 15>61 91|57b20 63l17 63t40
-15i37 stat_id{positive} 91|58r19 61r162
-15i61 train_id{positive} 91|59r34
-21i10*id{positive} 91|43r83 52r83 61r80 78r71 80m72 81m59 85r74 88r74 94r80
-. 96r80 109r77 111m65 112m80 113r80 118r80 121r86 124r83 136r77 145r71 146m71
-. 148r80 151r68 164r71 167r68 168m69 171r77 179r77 184r68 187r68 195r68 196m68
-. 199r77 205r65 216r77 218m65 219m80 220r80 225r80 228r86 234r77 252r43
-22i10*home_stat_id{positive} 91|133r87 136r141 174r134 176r47 179r191 187r146
-. 201r85
-23i10*on_train{natural} 91|47r27 49r42 72r62 82m31 94r146 114m37 221m37
-24i10*on_Station{natural} 91|56r27 58r38 83m31 103r62 115m37 124r151 189r63
-. 201r63 206r61 207r62 222m37
-25i10*dest_Station{natural} 91|34m28 39r41 133r134 136r190 138m25 143r65
-. 148r148 151r151 157r62 171r145 174r87 176m22 179r142 189r85 193r62 199r145
-. 234r145
-26p10*connectionlist 91|71r50 75r28 102r48 102r90 105r28 108r34 132r60 133m22
-. 135r25 139r28 140m25 174m22 178r25 180r28 181m25 190m22 202m22 206r25 210r65
-. 212r71 228r152
-27i10*connectionlist_iterator{natural} 91|84m31 84r67 134m22 141m25 175m22
-. 182m25 191m22 203m22
+11T14*WorkerTask 11d28 11d55 17l8 17e18 28r27 89|17b14 244l8 244t18
+12Y13 acceptTask 12>25 89|30b26 33l23 33t33
+12i25 stat_id{positive} 89|32r47
+13Y13 startTask 13>24 13>48 89|36b26 43l23 43t32
+13i24 stat_id{positive} 89|37r25 41r164
+13f48 work_time_hours{float} 89|38r42
+14Y13 trainStop 14>25 14>50 89|46b26 52l23 52t32
+14i25 train_id{positive} 89|47r25 50r162
+14i50 stat_id{positive} 89|48r42
+15Y13 notifyAboutTrainArrival 15>37 15>61 89|55b23 61l20 61t43
+15i37 stat_id{positive} 89|56r22 59r164
+15i61 train_id{positive} 89|57r37
+21i10*id{positive} 89|41r85 50r85 59r82 76r73 78m75 79m62 83r76 86r76 92r82
+. 94r82 107r79 109m68 110m83 111r82 116r91 119r88 122r85 134r79 143r73 144m74
+. 146r82 149r70 162r73 165r70 166m72 169r79 177r79 182r70 185r70 193r70 194m71
+. 197r79 203r67 214r79 216m68 217m83 218r82 223r91 226r88 232r79 253r43
+22i10*home_stat_id{positive} 89|131r90 134r144 172r137 174r50 177r194 185r148
+. 199r88
+23i10*on_train{natural} 89|45r30 47r45 70r65 80m34 92r148 112m40 219m40
+24i10*on_Station{natural} 89|54r30 56r41 81m34 101r65 113m40 122r153 187r66
+. 199r66 204r64 205r65 220m40
+25i10*dest_Station{natural} 89|32m31 37r44 131r137 134r193 136m28 141r68
+. 146r150 149r153 155r65 169r147 172r90 174m25 177r145 187r88 191r65 197r147
+. 232r147
+26p10*connectionlist 89|69r53 73r31 100r51 100r93 103r31 106r37 130r63 131m25
+. 133r28 137r31 138m28 172m25 176r28 178r31 179m28 188m25 200m25 204r28 208r68
+. 210r74 226r154
+27i10*connectionlist_iterator{natural} 89|82m34 82r70 132m25 139m28 173m25
+. 180m28 189m25 201m25
 28p10*w_task(11T14)
-29e10*state{9E9} 91|31r27 33m28 37r27 56r58 56r95 132r22 137m25 142m25 177m22
-. 183m25 189r25 192m22 201r25 204m22
-32P9*AWORKER(10R9) 36r25 40r70 91|250r25
-34V13*Hash{6|19M9} 34>18 39r88 91|246b13 249t7
-34i18 Key{positive} 91|246b18 248r24
-36V13*Hash{6|19M9} 36>19 40r88 91|250b13 253t7
-36p19 Key{32P9} 91|250b19 252r39
-39K12*IntSet[12|51] 91|209r27 210r22
+29e10*state{9E9} 89|29r30 31m31 35r30 54r61 54r98 130r25 135m28 140m28 175m25
+. 181m28 187r28 190m25 199r28 202m25
+32P9*AWORKER(10R9) 36r25 40r70 89|251r25
+34V13*Hash{6|19M9} 34>18 39r88 89|247b13 250t7
+34i18 Key{positive} 89|247b18 249r24
+36V13*Hash{6|19M9} 36>19 40r88 89|251b13 254t7
+36p19 Key{32P9} 89|251b19 253r39
+39K12*IntSet[12|51] 89|207r30 208r25
 40K12*HashSet[12|51]
-X 91 worker.adb
-18f7 work_duration{float} 40m22 163r61 166r83
-19b7 work{boolean} 41m22 156r13 159m16
-20p7 train_ptr(89|61R9) 72m13 74r16 81r22 85r113 88r120 93r19 106m19 107r22
-. 109r122 111r28 113r118 114r49 118r127 212m22 213r25 216r122 218r28 220r118
-. 221r49 225r127
-21p7 stat_ptr(41|21R9) 73m13 74r38 80r22 83r45 85r168 103m13 104r16 112r28
-. 113r170 143m16 144r19 146r19 157m13 158r16 168r16 193m13 194r16 196r16
-. 207m13 208r16 209r42 219r28 220r170
-23i7 check_train{natural} 59m19 102r13 105r88 106r59 108r94 121r143 128m13
-24i7 check_station{natural} 50m22 71r13 71r119 73r53 75r97 78r118 96r139
-. 99m13
-32i35 stat_id{positive}
-38i34 stat_id{positive}
-38f55 work_time_hours{float}
-48i35 train_id{positive}
-48i57 stat_id{positive}
-57i44 stat_id{positive}
-57i65 train_id{positive}
-161a19 dur{string} 163m47 164r106
-209i20 cur{any type} 210r49
-239r12 Error{18|63R9} 241r53 242r49
+X 89 worker.adb
+18f7 work_duration{float} 38m25 161r64 164r86
+19b7 work{boolean} 39m25 154r16 157m19
+20p7 train_ptr(87|61R9) 70m16 72r19 79r25 83r116 86r123 91r22 104m22 105r25
+. 107r125 109r31 111r121 112r52 116r139 210m25 211r28 214r125 216r31 218r121
+. 219r52 223r139
+21p7 stat_ptr(41|21R9) 71m16 72r41 78r25 81r48 83r172 101m16 102r19 110r31
+. 111r174 141m19 142r22 144r22 155m16 156r19 166r19 191m16 192r19 194r19
+. 205m16 206r19 207r45 217r31 218r174
+23i7 check_train{natural} 57m22 100r16 103r91 104r62 106r97 119r145 126m16
+24i7 check_station{natural} 48m25 69r16 69r122 71r56 73r100 76r121 94r141
+. 97m16
+30i38 stat_id{positive}
+36i37 stat_id{positive}
+36f58 work_time_hours{float}
+46i38 train_id{positive}
+46i60 stat_id{positive}
+55i47 stat_id{positive}
+55i68 train_id{positive}
+159a22 dur{string} 161m50 162r109
+207i23 cur{any type} 208r52
+240r12 Error{18|63R9} 242r53 243r49
 

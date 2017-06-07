@@ -23,7 +23,7 @@ RV NO_IMPLICIT_LOOPS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U getinput%b		getinput.adb		1f5a4629 OO PF PK
+U getinput%b		getinput.adb		18c66bce OO PF PK
 W ada%s			ada.ads			ada.ali
 W ada.characters%s	a-charac.ads		a-charac.ali
 W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
@@ -50,7 +50,7 @@ W track%s		track.adb		track.ali
 W train%s		train.adb		train.ali
 W worker%s		worker.adb		worker.ali
 
-U getinput%s		getinput.ads		c8c6ccc3 EE NE OO PK
+U getinput%s		getinput.ads		36eaa3dd EE NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.strings%s		a-string.ads		a-string.ali
 W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
@@ -84,9 +84,9 @@ D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
-D model.ads		20170527191540 eb809159 model%s
+D model.ads		20170602135624 15acfe47 model%s
 D station.ads		20170530110852 b43b2778 station%s
-D steering.ads		20170425093334 511a4152 steering%s
+D steering.ads		20170601204004 ba150710 steering%s
 D system.ads		20160516092930 2da59038 system%s
 D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
 D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
@@ -121,8 +121,8 @@ D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
 D s-valint.ads		20160516092930 48a52a3f system.val_int%s
 D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
 D s-win32.ads		20160516092926 b7f96285 system.win32%s
-D track.ads		20170521144948 7c12c738 track%s
-D train.ads		20170529182320 06baf68b train%s
+D track.ads		20170601204002 54b599f2 track%s
+D train.ads		20170601220140 3ca2acfa train%s
 D worker.ads		20170529201636 c9351b8a worker%s
 X 1 ada.ads
 16K9*Ada 19e8 22|1r6 2r6 23|1r6 2r6 9r6 30r27 31r26 159r80 194r80 272r82
@@ -176,7 +176,7 @@ X 20 a-textio.ads
 294X4*Name_Error 23|59r19
 X 22 getinput.ads
 6K9*GetInput 11l5 11e13 23|29b14 465l5 465t13
-10V13*getModelFromFile(28|26R9) 10>30 23|66b13 464l8 464t24
+10V13*getModelFromFile(28|27R9) 10>30 23|66b13 464l8 464t24
 10a30 Filename{string} 23|66b30 86r35
 X 23 getinput.adb
 30K12 TextIO=30:31 37r20 44r7 44r46 47r17 48r43 56r7 59r12 60r10 224r31 293r31
@@ -195,7 +195,7 @@ X 23 getinput.adb
 39i7 i{integer} 45m7 50r17 52m13 52r16
 40r7 line{18|79R9} 48m10 49r35 49r66 50r23
 67p7 Arr(33A9) 86m7 89r17 90r23 117r17 118r23
-68p7 model_ptr(28|26R9) 114m7 145r19 179r19 255r22 348r22 357r19 383r19 394r7
+68p7 model_ptr(28|27R9) 114m7 145r19 179r19 255r22 348r22 357r19 383r19 394r7
 . 396r17 397r13 398r13 398r42 406r20 407r26 409r69 410r27 426r17 427r22 428r21
 . 429r16 430r83 440r23 441r27 443r67 443r117 443r158 445r80 445r133 456r83
 . 456r136 463r14
@@ -234,7 +234,7 @@ X 23 getinput.adb
 74p7 train_ptr(66|61R9) 262m19 285m31 289m31 297r28 298r28 302r28 312r28
 . 327r34 337r28 347r22 348r50 407m13 408r16 409r16 409r59 412r53 413r25 413r54
 . 419r22 419r50
-75p7 track_ptr(65|43R9) 184m19 211m31 216m31 220m31 227r28 228r28 229r28
+75p7 track_ptr(65|47R9) 184m19 211m31 216m31 220m31 227r28 228r28 229r28
 . 231r28 235r28 239r28 243r28 253r22 254r22 255r50
 76p7 stat_ptr(29|21R9) 353m19 354r19 357r49 427m10 429r53 430r51
 77p7 work_ptr(67|19R9) 360m19 366r28 370r28 371r28 371r51 383r48
@@ -258,34 +258,34 @@ X 23 getinput.adb
 412i23 ittt{integer} 413r76
 426i11 it{integer} 427r40
 428i14 itt{integer} 429r33 430r100
-438p13 con(28|91A9) 443m22 444r25 446r36 447r31 448r97 448r147 448r205
+438p13 con(28|95A9) 443m22 444r25 446r36 447r31 448r97 448r147 448r205
 440i17 it{integer} 442r22 443r85 445r98 456r101
 441i20 it2{integer} 442r28 443r135 445r151 456r154
 446i29 it3{integer} 447r35 448r62 448r101 448r151 448r209 450r62
 X 28 model.ads
-10K9*Model 22|3w6 10r62 23|3w6 66r62 68r26 114r24 394r30 438r26 443r29 28|97e10
-14A9*TRACK_ARR(65|43R9)<integer> 23|394r36
+10K9*Model 22|3w6 10r62 23|3w6 66r62 68r26 114r24 394r30 438r26 443r29 28|101e10
+14A9*TRACK_ARR(65|47R9)<integer> 23|394r36
 16A9*STEERING_ARR(30|40R9)<integer>
 18A9*TRAIN_ARR(66|61R9)<integer>
 20A9*STATION_ARR(29|21R9)<integer>
 22A9*WORKER_ARR(67|19R9)<integer>
-26R9*Simulation_Model 22|10r68 23|66r68 68r32 114r30 28|41e17
-29i10*speed{positive} 23|145m29
-33a10*steer{16A9} 23|179m29
-34a10*track{14A9} 23|255m32 396r27 397r23 398r52
-35p10*platf(14A9) 23|394m17 398r23
-36a10*train{18A9} 23|348m32 406r30 407r36 410r37
-37a10*station{20A9} 23|357m29 426r27 427r32 440r33 441r37 443r77 443r127
+27R9*Simulation_Model 22|10r68 23|66r68 68r32 114r30 28|45e17
+30i10*speed{positive} 23|145m29
+37a10*steer{16A9} 23|179m29
+38a10*track{14A9} 23|255m32 396r27 397r23 398r52
+39p10*platf(14A9) 23|394m17 398r23
+40a10*train{18A9} 23|348m32 406r30 407r36 410r37
+41a10*station{20A9} 23|357m29 426r27 427r32 440r33 441r37 443r77 443r127
 . 445r90 445r143 456r93 456r146
-38a10*worker{22A9} 23|383m29 428r31 429r26 430r93
-87i10*train_id{positive} 23|448r106
-88i10*depart_station_id{positive} 23|448r156
-89i10*arrive_station_id{positive} 23|448r214
-91A9*Connection_Arr(85R9)<integer> 23|438r32
-92V13*getConnection(91A9) 23|443s35
-92i27 source_station{positive} 23|443r49
-92i55 destination_station{positive} 23|443r94
-92p88 model_ptr(26R9) 23|443r145
+42a10*worker{22A9} 23|383m29 428r31 429r26 430r93
+91i10*train_id{positive} 23|448r106
+92i10*depart_station_id{positive} 23|448r156
+93i10*arrive_station_id{positive} 23|448r214
+95A9*Connection_Arr(89R9)<integer> 23|438r32
+96V13*getConnection(95A9) 23|443s35
+96i27 source_station{positive} 23|443r49
+96i55 destination_station{positive} 23|443r94
+96p88 model_ptr(27R9) 23|443r145
 X 29 station.ads
 5K9*station 23|7w6 76r25 353r35 29|38e12
 6R9*STATION 23|76r33 353r43 29|32e17
@@ -313,21 +313,21 @@ X 49 s-stalib.adb
 93U14 Break_Start 94i<c,__gnat_break_start>22
 X 65 track.ads
 7K9*track 23|5w6 5r17 75r26 211r48 211r60 216r48 216r60 220r48 220r60 397r42
-. 65|73e10
+. 65|77e10
 10n24*Track_Type_Track{10E9} 23|216r66
 10n41*Track_Type_Platform{10E9} 23|211r66 397r48
 10n61*Track_Type_Service{10E9} 23|220r66
-11R9*TRACK 23|75r32 211r54 216r54 220r54 65|71e17
-43R9*TRACK
-43e16*t_type{10E9} 23|397r33
-45i10*id{positive} 23|227m38
-47i10*st_start{positive} 23|228m38
-49i10*st_end{positive} 23|229m38
-52i10*used_by{natural} 23|254m32
-63i16*distance{positive} 23|239m38
-64i16*max_speed{positive} 23|243m38
-66i16*min_delay{positive} 23|231m38
-67i16*station_id{positive} 23|235m38
+11R9*TRACK 23|75r32 211r54 216r54 220r54 65|75e17
+47R9*TRACK
+47e16*t_type{10E9} 23|397r33
+49i10*id{positive} 23|227m38
+51i10*st_start{positive} 23|228m38
+53i10*st_end{positive} 23|229m38
+56i10*used_by{natural} 23|254m32
+67i16*distance{positive} 23|239m38
+68i16*max_speed{positive} 23|243m38
+70i16*min_delay{positive} 23|231m38
+71i16*station_id{positive} 23|235m38
 X 66 train.ads
 8K9*train 23|4w6 4r17 74r26 285r48 285r60 289r48 289r60 312r55 408r35 66|98e10
 10n24*Train_Type_Normal{10E9} 23|285r66 408r41

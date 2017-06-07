@@ -591,9 +591,18 @@ package body Model is
                                        exit;
                                     end if;
                                  end loop;
+                                 if found_connection then
+                                    exit;
+                                 end if;
                               end loop;
                            end if;
+                           if found_connection then
+                              exit;
+                           end if;
                         end loop;
+                     end if;
+                     if found_connection then
+                        exit;
                      end if;
                   end loop;
                end;

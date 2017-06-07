@@ -68,7 +68,7 @@ package train is
          current_speed : Natural :=0;
 
          out_of_order : Boolean := False;
-         reliability : Float := 0.995 ;
+         reliability : Float := 0.99995 ;
 
          t_task : access TrainTask :=null;
          history : vec.Vector;

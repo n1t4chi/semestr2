@@ -45,7 +45,7 @@ package steering is
 
 
          out_of_order : Boolean := False;
-         reliability : Float := 0.995 ;
+         reliability : Float := 0.99995 ;
 
          s_task : access SteeringTask :=null;
          --curr_entry : Natural;

@@ -22,7 +22,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_IMPLICIT_LOOPS
 RV SPARK_05
 
-U dijkstra%b		dijkstra.adb		c8738634 NE OO PK IL
+U dijkstra%b		dijkstra.adb		e0d4d8fe NE OO PK IL
 W ada%s			ada.ads			ada.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
@@ -33,7 +33,7 @@ W system.tasking%s	s-taskin.adb		s-taskin.ali
 W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
 W track%s		track.adb		track.ali
 
-U dijkstra%s		dijkstra.ads		2e24233c EE NE OO PK IL
+U dijkstra%s		dijkstra.ads		011f5011 EE NE OO PK IL
 W model%s		model.adb		model.ali
 W steering%s		steering.adb		steering.ali
 W train%s		train.adb		train.ali
@@ -64,9 +64,9 @@ D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092926 5421119b interfaces.c%s
 D i-cstrin.ads		20160516092930 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
-D model.ads		20170527191540 eb809159 model%s
+D model.ads		20170602135624 15acfe47 model%s
 D station.ads		20170530110852 b43b2778 station%s
-D steering.ads		20170425093334 511a4152 steering%s
+D steering.ads		20170601204004 ba150710 steering%s
 D system.ads		20160516092930 2da59038 system%s
 D s-addima.ads		20160516092928 a1ec9d3a system.address_image%s
 D s-atacco.ads		20160516092930 4c36d12f system.address_to_access_conversions%s
@@ -101,8 +101,8 @@ D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
 D s-win32.ads		20160516092926 b7f96285 system.win32%s
-D track.ads		20170521144948 7c12c738 track%s
-D train.ads		20170529182320 06baf68b train%s
+D track.ads		20170601204002 54b599f2 track%s
+D train.ads		20170601220140 3ca2acfa train%s
 D worker.ads		20170529201636 c9351b8a worker%s
 X 1 ada.ads
 16K9*Ada 19e8 22|1r6
@@ -126,7 +126,7 @@ X 21 dijkstra.ads
 13i69 start_track_id{positive} 22|10b69 36r49 65r19 353r19
 13i97 target_id{positive} 22|10b97 40r29 42r45 46r45 346r26
 13e120 target_type{65|46E9} 22|10b120 39r10 41r13 45r13 344r36
-13p162 model_ptr(27|26R9) 22|10b162 34r71 36r79 42r57 46r57 50r76 72r20 74r16
+13p162 model_ptr(27|27R9) 22|10b162 34r71 36r79 42r57 46r57 50r76 72r20 74r16
 . 76r19 83r19 83r66 83r144 92r20 94r16 101r22 123r23 125r19 125r66 125r144
 . 130r38 131r25 131r72 145r23 146r19 148r33 149r22 149r69 218r23 225r42 225r88
 . 225r131 227r22 228r27 230r27 245r25 246r28 247r41 247r77 249r41 319r26
@@ -149,13 +149,13 @@ X 22 dijkstra.adb
 . 147r27 161r13 162m13 167r35 173r16 188r43 206r37 207r20 209r33 210r18 213r33
 . 214r18 216m13 216r21 234r50
 22p7 train_ptr(65|61R9) 34m7 246r60 249r77 320r91 325r91 394r91 408r91
-24p7 start_track(64|43R9) 36m7 61r11 61r53 62r38 62r82 131r50 131r97 149r47
+24p7 start_track(64|47R9) 36m7 61r11 61r53 62r38 62r82 131r50 131r97 149r47
 . 149r94
 26i7 target_steer_id{natural} 40m10 43m10 48m13 51m13 61r34 61r74 83r91 125r91
 . 290r35
 27i7 target_steer_id_2{natural} 44m10 52m13 62r10 62r61 62r103 83r117 83r169
 . 125r117 125r169 294r19 294r62 298r38
-29p7 target_track_ptr(64|43R9) 42m10 43r29 44r31 50m13 51r32 52r34
+29p7 target_track_ptr(64|47R9) 42m10 43r29 44r31 50m13 51r32 52r34
 30p7 target_train_ptr(65|61R9) 46m10 47r13 48r32 50r48
 72i14 it{integer} 74r32 76r35 83r35 83r82 83r160
 92i14 it{integer} 94r32
@@ -188,28 +188,28 @@ X 22 dijkstra.adb
 360i17 it{integer} 367r37 367r91 368r38 368r90 370r46
 376i17 it{integer} 377r26 378r30
 389b16 found{boolean} 395m22 398m28 402r25 409m22 413m28 417r25
-390p16 track_ptr(64|43R9) 411m25 412r28 412r73
+390p16 track_ptr(64|47R9) 411m25 412r28 412r73
 393i20 it{integer} 394r38 394r81 397r54 403r41
 396i26 itt{integer} 397r31
 407i20 it{integer} 408r38 408r81 412r63 412r110 418r41
 410i26 itt{integer} 411r56
 X 27 model.ads
-10K9*Model 21|3w6 13r181 22|10r181 34r20 36r22 42r30 46r30 50r33 411r38 27|97e10
-14A9*TRACK_ARR(64|43R9)<integer>
+10K9*Model 21|3w6 13r181 22|10r181 34r20 36r22 42r30 46r30 50r33 411r38 27|101e10
+14A9*TRACK_ARR(64|47R9)<integer>
 16A9*STEERING_ARR(29|40R9)<integer>
-26R9*Simulation_Model 21|13r187 22|10r187 27|41e17
-33a10*steer{16A9} 22|72r30 74r26 76r29 83r29 83r76 83r154 101r32 123r33 125r29
+27R9*Simulation_Model 21|13r187 22|10r187 27|45e17
+37a10*steer{16A9} 22|72r30 74r26 76r29 83r29 83r76 83r154 101r32 123r33 125r29
 . 125r76 125r154 130r48 131r35 131r82 145r33 146r29 148r43 149r32 149r79
 . 324r36 325r32 325r75 326r32 407r36 408r32 408r75 412r57 412r104 418r35
-34a10*track{14A9} 22|92r30 94r26 218r33 225r52 225r98 225r141 227r32 228r37
+38a10*track{14A9} 22|92r30 94r26 218r33 225r52 225r98 225r141 227r32 228r37
 . 230r37 245r35 246r38 247r51 247r87 249r51 319r36 320r32 320r75 321r32 360r33
 . 367r31 367r85 368r32 368r84 370r40 393r36 394r32 394r75 397r48 403r35
-53V13*getTrain(65|61R9) 22|34s26 46s36
-53i22 train_id{positive} 22|34r35
-53p44 model_ptr(26R9) 22|34r58
-56V13*getTrack(64|43R9) 22|36s28 42s36 50s39 411s44
-56i22 track_id{positive} 22|36r37
-56p44 model_ptr(26R9) 22|36r66
+57V13*getTrain(65|61R9) 22|34s26 46s36
+57i22 train_id{positive} 22|34r35
+57p44 model_ptr(27R9) 22|34r58
+60V13*getTrack(64|47R9) 22|36s28 42s36 50s39 411s44
+60i22 track_id{positive} 22|36r37
+60p44 model_ptr(27R9) 22|36r66
 X 29 steering.ads
 8K9*steering 21|1w6 11r52 22|14r22 29|57e13
 10R9*STEERING 21|11r61 22|14r31 29|54e17
@@ -230,22 +230,22 @@ X 45 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
 X 64 track.ads
-7K9*track 22|2w6 2r17 24r28 29r33 245r54 390r35 64|73e10
+7K9*track 22|2w6 2r17 24r28 29r33 245r54 390r35 64|77e10
 10n24*Track_Type_Track{10E9} 22|245r60
-11R9*TRACK 22|24r34 29r39 390r41 64|71e17
-33Y13 allowServiceTrain 22|94s43
-36Y13 freeFromServiceTrain 22|321s49 403s52
-43R9*TRACK
-43e16*t_type{10E9} 22|245r45
-45i10*id{positive} 22|320r85 370r50 394r85 397r58
-47i10*st_start{positive} 22|44r48 52r51 61r23 62r50 131r109 149r106 225r108
+11R9*TRACK 22|24r34 29r39 390r41 64|75e17
+37Y13 allowServiceTrain 22|94s43
+40Y13 freeFromServiceTrain 22|321s49 403s52
+47R9*TRACK
+47e16*t_type{10E9} 22|245r45
+49i10*id{positive} 22|320r85 370r50 394r85 397r58
+51i10*st_start{positive} 22|44r48 52r51 61r23 62r50 131r109 149r106 225r108
 . 227r42 230r47 367r41 368r94 412r83
-49i10*st_end{positive} 22|43r46 51r49 61r65 62r94 131r62 149r59 225r151 228r47
+53i10*st_end{positive} 22|43r46 51r49 61r65 62r94 131r62 149r59 225r151 228r47
 . 367r95 368r42 412r38
-52i10*used_by{natural} 22|225r62 320r42 394r42
-60p10*t_task(26T14) 22|94r36 321r42 403r45
-63i16*distance{positive} 22|247r61 249r61
-64i16*max_speed{positive} 22|246r48 247r97
+56i10*used_by{natural} 22|225r62 320r42 394r42
+64p10*t_task(26T14) 22|94r36 321r42 403r45
+67i16*distance{positive} 22|247r61 249r61
+68i16*max_speed{positive} 22|246r48 247r97
 X 65 train.ads
 8K9*train 21|2w6 2r17 22|22r26 30r33 65|98e10
 11R9*TRAIN 22|22r32 30r39 65|92e16
