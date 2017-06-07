@@ -1,0 +1,55 @@
+declare Perm in
+fun {Perm L Curr First N}
+   case L of X|Xs then
+      local T NL W1 W2 in
+	 T =  {Append Curr [X]}
+	% T = {Flatten [Curr X] }
+	 NL = {Flatten [Xs X]}
+	 if First == nil then
+	   {Append {Perm Xs T nil N-1}  {Perm NL Curr X N} }
+	 /*   W1 = {Perm Xs T nil N-1}
+	    W2 = {Perm NL Curr X N}
+	    {Browse start_f}
+	    {Browse T}
+	    {Browse W1}
+	    {Browse W2}
+	    {Browse W1|W2}
+	    {Browse end_f}
+	    W1|W2*/
+	 elseif First == X then
+	    nil
+	 else
+	   {Append {Perm Xs T nil N-1}  {Perm NL Curr First N} }
+	   /* W1= {Perm Xs T nil N-1}
+	    W2={Perm NL Curr First N}
+	    {Browse start_f}
+	    {Browse T}
+	    {Browse W1}
+	    {Browse W2}
+	    {Browse W1|W2}
+	    {Browse end_f}
+	    W1|W2*/
+	 end
+	 
+      end
+   else
+      if N==0 then
+	 [Curr]
+      else 
+	 nil
+      end
+      %{Append Curr Ls}
+   end
+   
+end
+
+
+declare Permutacje in
+fun {Permutacje L}
+   {Perm L nil nil {Length L}}
+end
+
+local L in
+   L = {Permutacje [1 2 3 4] }
+   {Browse L}
+end
