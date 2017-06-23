@@ -1,4 +1,5 @@
-In this repository I am storing most of the programs I have written for my studies.
+In this repository I am storing most of the programs I have written for my studies mostly for safekeeping.
+Sorting or documenting this would be a too much of a nuisance at this point, and creating repositiores/branches for each project would take some time.
 Some programs, usually from earlier semesters will surelly look bad and or use extensively Polish language.
 I have not kept descriptions of tasks for programs and usually have not kept making documentations due to laziness.
 Below are some descriptions of more interesting programs I have written:
